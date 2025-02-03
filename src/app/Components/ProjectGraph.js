@@ -17,7 +17,7 @@ export default function ProjectChart() {
       {/* <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 text-center">
         Project Status
       </h2> */}
-      <h2 className="text-heading text-center font-serif mb-12">Project Status</h2>
+      <h2 className="text-heading text-2xl md:text-4xl text-center font-serif mb-12">Project Status</h2>
 
 
       <div className="flex flex-wrap justify-center gap-10">
