@@ -6,21 +6,21 @@ import "react-circular-progressbar/dist/styles.css";
 
 export default function ProjectChart() {
   const [totalProject, setTotalProject] = useState(12);
-  const [pendingProject, setPendingProject] = useState(5);
-  const [deliveredProjects, setDeliveredProjects] = useState(7);
+  const [pendingProject, setPendingProject] = useState(2);
+  const [deliveredProjects, setDeliveredProjects] = useState(10);
 
   const percentageDelivered = totalProject > 0 ? (deliveredProjects / totalProject) * 100 : 0;
   const percentagePending = totalProject > 0 ? (pendingProject / totalProject) * 100 : 0;
 
   return (
-    <div className="w-full p-6 bg-white rounded-xl shadow-lg">
+    <div className="w-full p-3 bg-white rounded-xl shadow-lg">
       {/* <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 text-center">
         Project Status
       </h2> */}
-      <h2 className="text-heading text-2xl md:text-4xl text-center font-serif mb-12">Project Status</h2>
+      <h2 className="text-heading text-xl md:text-4xl text-center font-serif mb-12">Project Status</h2>
 
 
-      <div className="flex flex-wrap justify-center gap-10">
+      <div className="flex flex-wrap justify-center gap-10 md:gap-32">
         {/* Total Projects */}
         <div className="flex flex-col items-center w-20 md:w-36">
           <p className="font-semibold text-sm text-gray-700 mb-2">Total </p>

@@ -1,5 +1,7 @@
 import Head from "next/head";
 import ProjectChart from "./ProjectGraph";
+import LOGO from "@/images/LOGO.jpeg";
+import Image from "next/image";
 
 export default function MainScreen() {
   const recentActivity = [
@@ -49,10 +51,16 @@ export default function MainScreen() {
       {/* Hero Section */}
       <header className="bg-gradient-to-r from-gray-800 to-blue-800 py-20">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-2xl md:text-4xl font-bold text-white mb-6">
-            Streamline Your Business with ACE TECHNOLOGIES
-          </h1>
-          <p className="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
+          <div className="flex justify-center  md:items-end gap-5">
+            <Image src={LOGO}
+            className="w-20 h-20 md:w-28 md:h-28 rounded-full"
+            />
+
+            <h1 className="text-2xl md:text-5xl font-bold text-white mb-6">
+              Streamline Your Business with ACE TECHNOLOGIES
+            </h1>
+          </div>
+          <p className="text-sm md:text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
             Empower your team, optimize workflows, and grow your business with
             our all-in-one CRM solution.
           </p>
@@ -70,7 +78,7 @@ export default function MainScreen() {
       {/* Features Section */}
       <section className="py-10">
         <div className="container mx-auto px-6">
-          <h2 className="text-heading  text-2xl md:text-4xl font-serif text-center mb-12">
+          <h2 className="text-heading  text-xl md:text-4xl font-serif text-center mb-12">
             Why Choose ACE CRM?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -78,7 +86,7 @@ export default function MainScreen() {
               <div className="flex justify-center mb-6">
                 <span className="text-4xl text-blue-600">📊</span>
               </div>
-              <h3 className="text-subheading font-semibold mb-4">
+              <h3 className="text-subheading text-xl font-semibold mb-4">
                 Real-Time Analytics
               </h3>
               <p className="text-text">
@@ -89,7 +97,7 @@ export default function MainScreen() {
               <div className="flex justify-center mb-6">
                 <span className="text-4xl text-green-600">🤝</span>
               </div>
-              <h3 className="text-subheading font-semibold mb-4">
+              <h3 className="text-subheading text-xl font-semibold mb-4">
                 Seamless Collaboration
               </h3>
               <p className="text-text">
@@ -101,7 +109,7 @@ export default function MainScreen() {
               <div className="flex justify-center mb-6">
                 <span className="text-4xl text-purple-600">⚙️</span>
               </div>
-              <h3 className="text-subheading font-semibold mb-4">
+              <h3 className="text-subheading text-xl font-semibold mb-4">
                 Customizable Workflows
               </h3>
               <p className="text-text">
@@ -114,7 +122,7 @@ export default function MainScreen() {
 
       {/* Recent Activity Section */}
       <div className="py-10 mx-auto px-6">
-        <h2 className="text-heading text-2xl md:text-4xl text-center font-serif mb-12">
+        <h2 className="text-heading text-xl md:text-4xl text-center font-serif mb-12">
           Recent Activity
         </h2>
         <div className="py-8 container mx-auto px-6 rounded-lg shadow-lg max-h-80 overflow-y-auto scrollbar-none hover:scrollbar-block">
