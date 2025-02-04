@@ -49,17 +49,17 @@ export default function MainScreen() {
       </Head>
 
       {/* Hero Section */}
-      <header className="bg-gradient-to-r from-gray-800 to-blue-800 py-20">
+      <header className="border border-red-500 bg-gradient-to-r from-gray-800 to-blue-800 py-20">
         <div className="container mx-auto px-6 text-center">
-          <div className="flex justify-center  md:items-end gap-5">
-            <Image src={LOGO}
+          {/* <div className="flex justify-around items-start lg:items-end "> */}
+            {/* <Image src={LOGO}
             className="w-20 h-20 md:w-28 md:h-28 rounded-full"
-            />
+            /> */}
 
-            <h1 className="text-2xl md:text-5xl font-bold text-white mb-6">
-              Streamline Your Business with ACE TECHNOLOGIES
+            <h1 className=" w-full md:w-2/3 lg:w-full text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+              Streamline Your Business with 3ACE TECHNOLOGIES
             </h1>
-          </div>
+          {/* </div> */}
           <p className="text-sm md:text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
             Empower your team, optimize workflows, and grow your business with
             our all-in-one CRM solution.
