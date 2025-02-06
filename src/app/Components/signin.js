@@ -168,14 +168,14 @@ const Signin = () => {
   };
 
   return (
-    <div className="container mx-auto py-10 px-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-heading text-xl md:text-4xl font-serif text-center mb-12">
+    <div className="w-full mx-auto py-4 px-6 bg-white rounded-lg shadow-lg">
+      <h2 className="text-heading text-xl md:text-4xl font-serif text-center ">
         Sign In
       </h2>
 
       <form className="space-y-6 flex flex-col items-center" onSubmit={handleSubmit}>
         <div className="w-full md:w-4/5">
-          <label htmlFor="email" className="block text-gray-700">
+          <label htmlFor="email" className="block text-text font-semibold">
             Email
           </label>
           <input
@@ -188,7 +188,7 @@ const Signin = () => {
         </div>
 
         <div className="w-full md:w-4/5">
-          <label htmlFor="password" className="block text-gray-700">
+          <label htmlFor="password" className="block text-text font-semibold">
             Password
           </label>
           <input

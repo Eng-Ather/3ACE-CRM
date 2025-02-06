@@ -13,7 +13,7 @@ export default function ProjectChart() {
   const percentagePending = totalProject > 0 ? (pendingProject / totalProject) * 100 : 0;
 
   return (
-    <div className="w-full p-3 bg-white rounded-xl shadow-lg">
+    <div className="w-full p-3 mb-2 bg-white rounded-xl shadow-lg">
       {/* <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 text-center">
         Project Status
       </h2> */}
