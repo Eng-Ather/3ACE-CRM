@@ -463,6 +463,7 @@ import LOGO from "@/images/LOGO.jpeg";
 import Image from "next/image";
 import Signin from "./signin";
 import ServicesPage from "./Services";
+import Banner from '@/images/Banner.png'
 
 export default function MainScreen() {
   const recentActivity = [
@@ -510,23 +511,30 @@ export default function MainScreen() {
       </Head>
 
       {/* Hero Section */}
-      <header className=" bg-gradient-to-r from-gray-800 to-blue-800 py-20">
+      
+      
+      {/* Banner */}
+      <div className="border border-red-500 w-full h-[200px] md:h-[500px] lg:h-[800px]">
+        <Image
+          src={Banner}
+          alt={"banner"}
+          // width={1000}
+          // height={500}
+          className="w-full h-full"
+        />
+      </div>
+
+      {/* <header className=" bg-gradient-to-r from-gray-800 to-blue-800 py-20">
         <div className="container mx-auto px-6 text-center">
           <h1 className=" w-full md:w-2/3 lg:w-full text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Streamline Your Business with 3ACE TECHNOLOGIES
           </h1>
-          {/* </div> */}
           <p className="text-sm md:text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
             Empower your team, optimize workflows, and grow your business with
             our all-in-one CRM solution.
           </p>
-          {/* <div className="space-x-4">
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
-              SignIn
-            </button>
-          </div> */}
         </div>
-      </header>
+      </header> */}
 
       {/* Business States Section */}
       <ProjectChart />
@@ -575,12 +583,12 @@ export default function MainScreen() {
           </div>
         </div>
       </section> */}
-     
+
       <div className="flex flex-col md:flex-row gap-2">
         {/* Sign-in Form */}
         <div className="w-full md:w-1/2">
-        <Signin />
-         </div>
+          <Signin />
+        </div>
 
         {/* Recent Activity Section */}
         <div className="bg-white w-full md:w-1/2 py-4 mx-auto ">
@@ -607,8 +615,8 @@ export default function MainScreen() {
       </div>
 
       <div>
-              <ServicesPage/>
-        </div>
+        <ServicesPage />
+      </div>
     </div>
   );
 }
