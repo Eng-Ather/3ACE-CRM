@@ -147,6 +147,8 @@ const Signin = () => {
     try {
       const response = await axios.post(AppRouts.signin, { email, password });
       const userInfo = response.data.data.info;
+      console.log("token : ", response.data.data.token);
+      
       console.log("User Info:", userInfo);
 
       setUserDetails(userInfo);
@@ -168,14 +170,14 @@ const Signin = () => {
   };
 
   return (
-    <div className="w-full mx-auto py-4 px-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-heading text-xl md:text-4xl font-serif text-center ">
+    <div className="w-full mx-auto py-4 px-6">
+      <h2 className="text-heading text-xl pt-10 md:text-4xl font-serif text-center ">
         Sign In
       </h2>
 
       <form className="space-y-6 flex flex-col items-center" onSubmit={handleSubmit}>
         <div className="w-full md:w-4/5">
-          <label htmlFor="email" className="block text-text font-semibold">
+          <label htmlFor="email" className="block text-text text-lg font-semibold font-serif">
             Email
           </label>
           <input
@@ -188,7 +190,7 @@ const Signin = () => {
         </div>
 
         <div className="w-full md:w-4/5">
-          <label htmlFor="password" className="block text-text font-semibold">
+          <label htmlFor="password" className="block text-text text-lg font-semibold font-serif">
             Password
           </label>
           <input
@@ -202,7 +204,7 @@ const Signin = () => {
 
         <button
           type="submit"
-          className=" bg-blue-500 text-white font-serif font-semibold  px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
+          className="w-full md:w-4/5  bg-blue-500 text-white text-lg font-semibold font-serif px-10 py-2 rounded-lg hover:bg-heading transition duration-100"
           disabled={loading}
         >
           {loading ? "Signing in..." : "Sign In"}
