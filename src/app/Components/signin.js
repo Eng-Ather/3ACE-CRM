@@ -204,7 +204,7 @@ const Signin = () => {
 
         <button
           type="submit"
-          className="w-full md:w-4/5  bg-blue-500 text-white text-lg font-semibold font-serif px-10 py-2 rounded-lg hover:bg-heading transition duration-100"
+          className="w-full md:w-4/5  bg-blue-500 text-white text-lg font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
           disabled={loading}
         >
           {loading ? "Signing in..." : "Sign In"}

@@ -3,7 +3,7 @@ export default function Footer() {
     /* Footer */
   }
   return (
-    <footer className="bg-gradient-to-r  from-gray-800 to-blue-800 text-white py-10">
+    <footer className="bg-gradient-to-r from-gray-800 to-blue-800 text-white py-10">
       <div className="container mx-auto px-6 text-center">
         <p className="text-white">
           &copy; {new Date().getFullYear()} ACE CRM. All rights reserved.
