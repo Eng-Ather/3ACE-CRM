@@ -501,7 +501,7 @@ export default function MainScreen() {
 
   return (
     <div className="min-h-screen bg-background">
-    {/* <div className="min-h-screen bg-blue-50"> */}
+      {/* <div className="min-h-screen bg-blue-50"> */}
 
       <Head>
         <title>ACE CRM - Streamline Your Business Operations</title>
@@ -515,7 +515,7 @@ export default function MainScreen() {
       {/* Hero Section */}
 
       {/* Banner */}
-      <div className=" w-full h-[200px] md:h-[500px] lg:h-[800px]">
+      <div className=" w-full h-[200px] md:h-[500px] lg:h-[600px]">
         <Image
           src={Banner}
           alt={"banner"}
@@ -526,19 +526,18 @@ export default function MainScreen() {
       </div>
 
       <div className=" flex flex-col md:flex-row gap-2">
-       
         {/* Recent Activity Section */}
         <div className=" w-full md:w-1/2 py-5 mx-auto ">
           <ProjectChart />
         </div>
 
-         {/* Sign-in Form */}
-         <div className="w-full md:w-1/2">
+        {/* Sign-in Form */}
+        <div className="w-full md:w-1/2">
           <Signin />
         </div>
-
       </div>
 
+      {/* recent activities */}
       <div className=" container mx-auto">
         <h2 className="text-heading text-center md:text-start text-xl md:text-4xl font-serif p-8 ">
           Recent Activity
@@ -606,6 +605,9 @@ export default function MainScreen() {
             </div>
           </div>
         </section>
+      </div>
+      <div className="container mx-auto">
+        <ServicesPage />
       </div>
     </div>
   );
