@@ -31,7 +31,7 @@ const ServicesPage = () => {
         <div className="bg-[#F9FAFB]">
             {/* Services Description */}
             <div className="py-10 w-full mx-auto px-4 md:px-10">
-                <h2 className="text-3xl font-bold text-center text-[#1E3A8A] mb-8">
+                <h2 className="text-heading text-center md:text-start text-xl md:text-4xl font-serif p-8">
                     Our Expertise in Software Development
                 </h2>
                 <p className="text-center text-lg text-[#4B5563] mb-12">
