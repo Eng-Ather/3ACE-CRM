@@ -515,7 +515,7 @@ export default function MainScreen() {
       {/* Hero Section */}
 
       {/* Banner */}
-      <div className=" w-full h-[200px] md:h-[500px] lg:h-[600px]">
+      <div className=" w-full h-[200px] md:h-[500px]">
         <Image
           src={Banner}
           alt={"banner"}
