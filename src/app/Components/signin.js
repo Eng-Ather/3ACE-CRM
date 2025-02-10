@@ -40,7 +40,6 @@
 // console.log(userDetails.role);
 // console.log("userInfo.role", userInfo.role);
 
-
 //     switch (userDetails?.role) {
 //         case "admin":
 //           router.push("/AdminDashBoard");
@@ -61,10 +60,7 @@
 // //     alert("Unauthorized role!");
 // //   }
 
-
 //   };
-
-  
 
 //   console.log("Current User Details:", userDetails); // This will now show correct data
 
@@ -122,13 +118,13 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 import AppRouts from "@/Constant/Constant";
 import axios from "axios";
 
 const Signin = () => {
   const [loading, setLoading] = useState(false);
-  const router = useRouter(); 
+  const router = useRouter();
   const [userDetails, setUserDetails] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -148,17 +144,30 @@ const Signin = () => {
       const response = await axios.post(AppRouts.signin, { email, password });
       const userInfo = response.data.data.info;
       console.log("token : ", response.data.data.token);
-      
+
       console.log("User Info:", userInfo);
 
       setUserDetails(userInfo);
 
-      //  Navigate 
+      //  Navigate
       if (userInfo.role === "admin") {
-        router.push("/AdminDashboard" );
-      } else if (userInfo.role === "employee") {
+        router.push("/AdminDashboard");
+      } 
+      else if (userInfo.role === "employee") {
         router.push("/EmployeeDashboard");
-      } else {
+      }
+       else if (userInfo.role === "salesPerson") {
+        // router.push("/EmployeeDashboard");
+        router.push("/SalesPersonDashboard");
+
+      }
+       else if (userInfo.role === "developer") {
+        router.push("/DeveloperDashBoard");
+      } 
+      else if (userInfo.role === "graphicsDesigner") {
+        router.push("/GraphicsDesignerDashBoard");
+      }
+       else {
         alert("Unauthorized role!");
       }
     } catch (error) {
@@ -175,9 +184,15 @@ const Signin = () => {
         Sign In
       </h2>
 
-      <form className="space-y-6 flex flex-col items-center" onSubmit={handleSubmit}>
+      <form
+        className="space-y-6 flex flex-col items-center"
+        onSubmit={handleSubmit}
+      >
         <div className="w-full md:w-4/5">
-          <label htmlFor="email" className="block text-text text-lg font-semibold font-serif">
+          <label
+            htmlFor="email"
+            className="block text-text text-lg font-semibold font-serif"
+          >
             Email
           </label>
           <input
@@ -190,7 +205,10 @@ const Signin = () => {
         </div>
 
         <div className="w-full md:w-4/5">
-          <label htmlFor="password" className="block text-text text-lg font-semibold font-serif">
+          <label
+            htmlFor="password"
+            className="block text-text text-lg font-semibold font-serif"
+          >
             Password
           </label>
           <input
