@@ -276,7 +276,7 @@ const Projects = () => {
                 {projects.map((project, index) => (
                   <tr
                     key={index}
-                    className="border-b hover:bg-gray-100 transition"
+                    className="border-b hover:bg-gray-100 transition text-sm"
                   >
                     <td className="p-3">{index + 1}</td>
                     <td className="p-3">{project.projectTitle}</td>
