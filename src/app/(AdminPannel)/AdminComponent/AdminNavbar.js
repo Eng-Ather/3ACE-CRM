@@ -36,7 +36,7 @@ export default function Navbar() {
       </div>
 
       {/* Large Screen Menu */}
-      <div className="hidden md:flex justify-between items-center w-1/3 space-x-6 text-lg font-medium">
+      <div className="font-serif hidden md:flex justify-between items-center w-1/3 space-x-6 text-lg font-medium">
         {/* Large Screen Menu */}
         <div className="hidden md:flex items-center w-full justify-between text-lg font-medium">
           <Link href="/" className="hover:scale-110 transition">
