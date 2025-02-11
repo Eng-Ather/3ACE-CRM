@@ -96,7 +96,8 @@
 import React from "react";
 import LogoutButton from "@/app/Components/Logout";
 import AdminNavbar from "../AdminComponent/AdminNavbar";
-import Navbar from "@/app/Components/DashboardNavebar";
+// import AdminHerosection from "../AdminComponent/Projects";
+import Projects from "../AdminComponent/Projects";
 
 export default function AdminDashboard() {
   // Dummy data for demonstration
@@ -108,7 +109,8 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-background text-text">
       {/* Navbar */}
       <AdminNavbar />
-      {/* <Navbar/> */}
+      {/* <AdminHerosection/> */}
+      <Projects/>
 
       {/* Main Content */}
       <div className="p-8">
@@ -136,36 +138,9 @@ export default function AdminDashboard() {
           </div>
         </div> */}
 
-        {/* Employee Information Section */}
-        {/* <section className="mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-heading">Employee Information</h2>
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-gray-200">
-                  <th className="p-2 text-subheading">Name</th>
-                  <th className="p-2 text-subheading">Role</th>
-                  <th className="p-2 text-subheading">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b">
-                  <td className="p-2 text-text">John Doe</td>
-                  <td className="p-2 text-text">Sales Manager</td>
-                  <td className="p-2 text-green-600">Active</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="p-2 text-text">Jane Smith</td>
-                  <td className="p-2 text-text">Sales Executive</td>
-                  <td className="p-2 text-red-600">Inactive</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section> */}
-
+       
         {/* Project Management Section */}
-        <section className="mb-8">
+        {/* <section className="mb-8">
           <h2 className="text-2xl font-bold mb-4 text-heading">Project Management</h2>
           <div className="bg-white p-6 rounded-lg shadow-md">
             <table className="w-full">
@@ -190,7 +165,7 @@ export default function AdminDashboard() {
               </tbody>
             </table>
           </div>
-        </section>
+        </section> */}
       </div>
 
       {/* Logout Button */}

@@ -8,9 +8,7 @@ const Base_URL = dev_url;
 
 const AppRouts = {
   signin: Base_URL + "/user/login",
-//   signin: Base_URL + "/user/login",
-
-
   signup: Base_URL + "/user/signup",
+  getAllProject: Base_URL + "/projects/allproject"
 };
 export default AppRouts;
