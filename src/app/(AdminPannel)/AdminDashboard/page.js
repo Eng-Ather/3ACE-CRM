@@ -107,8 +107,8 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-background text-text">
       {/* Navbar */}
-      {/* <AdminNavbar /> */}
-      <Navbar/>
+      <AdminNavbar />
+      {/* <Navbar/> */}
 
       {/* Main Content */}
       <div className="p-8">

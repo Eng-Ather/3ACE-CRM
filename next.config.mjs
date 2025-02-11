@@ -7,7 +7,7 @@ const nextConfig = {
         'encrypted-tbn0.gstatic.com', 'encrypted-tbn0.gstatic.com', 'encrypted-tbn0.gstatic.com'
       ,'imageio.forbes.com', 'encrypted-tbn0.gstatic.com','www.sphinx-solution.com',
     'encrypted-tbn0.gstatic.com','www.magetop.com','static.vecteezy.com','motivitylabs.com',
-  'www.creativeitinstitute.com','odysseydesignco.com'],
+  'www.creativeitinstitute.com','odysseydesignco.com','static.vecteezy.com'],
       },
 };
 
