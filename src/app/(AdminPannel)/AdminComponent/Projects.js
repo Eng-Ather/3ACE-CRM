@@ -231,43 +231,43 @@ const Projects = () => {
             <table className="w-full border-collapse ">
               <thead>
                 <tr className="bg-gray-200 text-left">
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Sr
                   </th>
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Project{" "}
                   </th>
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Project type
                   </th>
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Client
                   </th>
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Contact no
                   </th>
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Email
                   </th>
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Onbording
                   </th>
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Sales Person
                   </th>
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Status
                   </th>
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Link
                   </th>
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Developer
                   </th>
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Porpose Completion date
                   </th>
-                  <th className="p-3 text-subheading">
+                  <th className="p-3 text-md">
                     Actual Completion date
                   </th>
                 </tr>
