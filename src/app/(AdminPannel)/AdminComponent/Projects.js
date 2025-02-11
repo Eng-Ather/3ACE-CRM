@@ -225,17 +225,17 @@ const Projects = () => {
 
         {/* Project Management Section */}
         <section className="mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-heading">Project </h2>
+          <h2 className="text-2xl font-semibold font-serif mb-4 text-heading">Project </h2>
 
           <div className="bg-white py-6 rounded-lg shadow-md overflow-x-auto">
             <table className="w-full border-collapse ">
               <thead>
-                <tr className="bg-gray-200 text-left">
+                <tr className="bg-gray-200 font-serif text-left">
                   <th className="p-3 text-md">
                     Sr
                   </th>
                   <th className="p-3 text-md">
-                    Project{" "}
+                    Project Title{" "}
                   </th>
                   <th className="p-3 text-md">
                     Project type
@@ -276,7 +276,7 @@ const Projects = () => {
                 {projects.map((project, index) => (
                   <tr
                     key={index}
-                    className="border-b hover:bg-gray-100 transition text-sm"
+                    className="border-b hover:bg-gray-100 transition text-sm font-serif"
                   >
                     <td className="p-3">{index + 1}</td>
                     <td className="p-3">{project.projectTitle}</td>
