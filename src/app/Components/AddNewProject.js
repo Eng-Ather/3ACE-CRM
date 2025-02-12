@@ -50,7 +50,7 @@ const AddNewProject = () => {
       {/* Button to Open Modal */}
       <button
         onClick={() => setNewProjectForm(true)}
-        className="bg-heading text-white text-2xl px-6 py-3 rounded-lg hover:bg-heading/90 transition duration-300 shadow-md"
+        className="bg-heading text-white text-lg px-3 py-2 rounded-lg hover:bg-heading/90 transition duration-300 shadow-md"
       >
         +
       </button>
@@ -78,7 +78,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="projectTitle"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Project Title
                   </label>
@@ -93,7 +93,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="projectType"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Project Type
                   </label>
@@ -112,7 +112,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="client"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Client
                   </label>
@@ -127,7 +127,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="contactNo"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Contact Number
                   </label>
@@ -146,7 +146,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="email"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Email
                   </label>
@@ -160,7 +160,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="onboarding"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Onboarding Date
                   </label>
@@ -178,7 +178,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="salesPerson"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Sales Person
                   </label>
@@ -193,7 +193,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="status"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Status
                   </label>
@@ -214,7 +214,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="link"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Link
                   </label>
@@ -228,7 +228,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="proposedCompletionDate"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Proposed Completion Date
                   </label>
@@ -245,7 +245,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="actualCompletionDate"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Actual Completion Date
                   </label>
@@ -258,7 +258,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="region"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Region
                   </label>
@@ -277,7 +277,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="developer"
-                    className="block text-text text-lg font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"
                   >
                     Developer
                   </label>
@@ -295,7 +295,7 @@ const AddNewProject = () => {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="w-fit bg-blue-500 text-white text-lg font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
+                  className="w-fit bg-blue-500 text-white text-md font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
                   disabled={loading}
                 >
                   {loading ? "Submitting..." : "Submit"}
