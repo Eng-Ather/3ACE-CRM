@@ -10,6 +10,9 @@ const AppRouts = {
   signin: Base_URL + "/user/login",
   signup: Base_URL + "/user/signup",
   getAllProject: Base_URL + "/projects/allproject",
+  getSpecificProject: Base_URL + "/projects/",
+  editProject: Base_URL + "/projects",
   addNewProject: Base_URL + "/projects/newproject",
+
 };
 export default AppRouts;

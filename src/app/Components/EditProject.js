@@ -1,19 +1,41 @@
 "use client";
 
-import { useState } from "react";
-import AppRouts from "@/Constant/Constant";
+import { useEffect, useState } from "react";
+import AppRouter from "@/Constant/Constant";
 import axios from "axios";
 
-const AddNewProject = () => {
-  const [loading, setLoading] = useState(false);
-  //   const [userDetails, setUserDetails] = useState(null);
-  const [newProjectForm, setNewProjectForm] = useState(false);
+const EditButton = ({ id }) => {
+  const [editProjectDetails, setEditProjectDetails] = useState(false);
+  const [projectCurrentDetails, setProjectCurrentDetails] = useState()
+  const [loading, setLoading] = useState(false); // Added loading state
+
+//  to get project details
+  const fatchData = async () => {
+    try {
+      const detail = AppRouter.getSpecificProject + id;
+      const projectdetails = await axios.get(detail);
+      // const projectdetails = await axios.get(
+      //   `${AppRouter.getSpecificProject}/${id}`
+      // );
+      console.log("project details: ", projectdetails.data.data);
+      setProjectCurrentDetails(projectdetails.data.data)
+    } 
+    catch (error) {
+      alert("error", error.message);
+    }
+  };
+
+  const handleClick = () => {
+    console.log("project id", id); // Log the project id
+    fatchData();
+    setEditProjectDetails(true); // Open the modal
+    
+  };
 
   const handleSubmit = async (e) => {
-    console.log("New Project Details", e.target.email.value);
-    e.preventDefault(); // Form submission ko default behavior se rokne ke liye
-
-    const newProjectData = {
+    e.preventDefault();
+  
+    const updateData = {
       projectTitle: e.target.projectTitle.value,
       projectType: e.target.projectType.value,
       client: e.target.client.value,
@@ -28,44 +50,52 @@ const AddNewProject = () => {
       region: e.target.region.value,
       developer: e.target.developer.value,
     };
-
-    console.log("New Project Data:", newProjectData);
-    // alert("Project Submitted!");
-    // setNewProjectForm(false);
-    setLoading(true);
+  
+    console.log("New Project Data:", updateData);
+  
     try {
-      const response = await axios.post(AppRouts.addNewProject, newProjectData);
-      alert("save data sucessfully");
-      setNewProjectForm(false);
+      setLoading(true); // 🔹 Loading state start
+  
+      const response = await axios.put(`${AppRouter.editProject}/${id}`, updateData);
+  
+      console.log("Server Response:", response.data);
+  
+      if (response.status === 200) {
+        alert("Project updated successfully!");
+        setEditProjectDetails(false); // 🔹 Modal close if successful
+      } else {
+        alert("Failed to update project.");
+        setLoading(false)
+      }
     } catch (error) {
-      alert("ERROR: " + error);
-      setLoading(false);
+      console.error("Error updating project:", error);
+      alert("Error updating project, please try again.");
     } finally {
-      setLoading(false);
+      setLoading(false); // 🔹 Ensure loading state stops
     }
   };
-
+  
   return (
     <>
-      {/* Button to Open Modal */}
+      {/* Edit Button */}
       <button
-        onClick={() => setNewProjectForm(true)}
-        className="bg-heading text-white text-lg px-3 py-1 rounded-full hover:bg-heading/90 transition duration-300 shadow-md"
+        onClick={handleClick} // Fixed: Call handleClick directly
+        className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
       >
-        +
+        Edit
       </button>
 
       {/* Modal */}
-      {newProjectForm && (
+      {editProjectDetails && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
           <div className="bg-white/90 p-4 rounded-lg shadow-2xl w-full max-w-4xl mx-4 overflow-y-auto max-h-[95vh]">
             <div className="flex justify-between items-center mb-3">
               <h2 className="text-3xl font-serif text-heading">
-                Add New Project
+                Edit Project Details <p className="text-lg">{id}</p>{" "}
               </h2>
               {/* Cancel Button */}
               <button
-                onClick={() => setNewProjectForm(false)}
+                onClick={() => setEditProjectDetails(false)} // Fixed: Use setEditProjectDetails
                 className="text-4xl text-gray-600 hover:text-black transition duration-300"
               >
                 ×
@@ -87,7 +117,7 @@ const AddNewProject = () => {
                     name="projectTitle"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter project title"
-                    required
+                    defaultValue={projectCurrentDetails?.projectTitle}
                   />
                 </div>
                 <div className="w-full md:w-1/2">
@@ -102,7 +132,7 @@ const AddNewProject = () => {
                     name="projectType"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter project type"
-                    required
+                    defaultValue={projectCurrentDetails?.projectType}
                   />
                 </div>
               </div>
@@ -121,7 +151,7 @@ const AddNewProject = () => {
                     name="client"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter client name"
-                    required
+                    defaultValue={projectCurrentDetails?.client}
                   />
                 </div>
                 <div className="w-full md:w-1/2">
@@ -136,7 +166,7 @@ const AddNewProject = () => {
                     name="contactNo"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter contact number"
-                    required
+                    defaultValue={projectCurrentDetails?.contactNo}
                   />
                 </div>
               </div>
@@ -155,6 +185,7 @@ const AddNewProject = () => {
                     name="email"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter email"
+                    defaultValue={projectCurrentDetails?.email}
                   />
                 </div>
                 <div className="w-full md:w-1/2">
@@ -168,7 +199,11 @@ const AddNewProject = () => {
                     type="date"
                     name="onboarding"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
-                    required
+                    defaultValue={
+                      projectCurrentDetails?.onboarding 
+                        ? new Date(projectCurrentDetails.onboarding).toISOString().split("T")[0] 
+                        : ""
+                    }
                   />
                 </div>
               </div>
@@ -187,7 +222,7 @@ const AddNewProject = () => {
                     name="salesPerson"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter sales person name"
-                    required
+                    defaultValue={projectCurrentDetails?.salesPerson}                    
                   />
                 </div>
                 <div className="w-full md:w-1/2">
@@ -200,9 +235,8 @@ const AddNewProject = () => {
                   <select
                     name="status"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
-                    required
+                    defaultValue={projectCurrentDetails?.status }                    
                   >
-                    {/* <option value="In Progress">In Progress</option> */}
                     <option value="Completed">Completed</option>
                     <option value="Pending">Pending</option>
                   </select>
@@ -222,6 +256,7 @@ const AddNewProject = () => {
                     type="text"
                     name="link"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
+                    defaultValue={projectCurrentDetails?.link }                    
                     placeholder="Enter project link"
                   />
                 </div>
@@ -236,6 +271,12 @@ const AddNewProject = () => {
                     type="date"
                     name="proposedCompletionDate"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
+                    defaultValue={
+                      projectCurrentDetails?.proposedCompletionDate 
+                        ? new Date(projectCurrentDetails.proposedCompletionDate).toISOString().split("T")[0] 
+                        : ""
+                    }
+                  
                   />
                 </div>
               </div>
@@ -253,6 +294,11 @@ const AddNewProject = () => {
                     type="date"
                     name="actualCompletionDate"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
+                    defaultValue={
+                      projectCurrentDetails?.actualCompletionDate 
+                        ? new Date(projectCurrentDetails.actualCompletionDate).toISOString().split("T")[0] 
+                        : ""
+                    }
                   />
                 </div>
                 <div className="w-full md:w-1/2">
@@ -267,7 +313,8 @@ const AddNewProject = () => {
                     name="region"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter region"
-                    required
+                    defaultValue={projectCurrentDetails?.region }                    
+                    
                   />
                 </div>
               </div>
@@ -286,7 +333,8 @@ const AddNewProject = () => {
                     name="developer"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter developer name"
-                    defaultValue="Not Assigned"
+                    defaultValue={projectCurrentDetails?.developer }                    
+                    
                   />
                 </div>
               </div>
@@ -309,4 +357,4 @@ const AddNewProject = () => {
   );
 };
 
-export default AddNewProject;
+export default EditButton;
