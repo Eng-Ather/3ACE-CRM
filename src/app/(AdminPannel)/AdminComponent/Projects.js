@@ -323,19 +323,19 @@ const Projects = () => {
       {/* Stats Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white p-6 rounded-lg shadow-md flex justify-between">
-          <h2 className="text-lg font-semibold text-subheading">
+          <h2 className="text-md font-semibold text-subheading">
             Total Projects
           </h2>
           <p className="text-3xl font-bold text-heading">{totalProjects}</p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md flex justify-between">
-          <h2 className="text-lg font-semibold text-subheading">
+          <h2 className="text-md font-semibold text-subheading">
             Pending Projects
           </h2>
           <p className="text-3xl font-bold text-heading">{pendingProjects}</p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md flex justify-between">
-          <h2 className="text-lg font-semibold text-subheading">
+          <h2 className="text-md font-semibold text-subheading">
             Completed Projects
           </h2>
           <p className="text-3xl font-bold text-heading">{completedProjects}</p>
