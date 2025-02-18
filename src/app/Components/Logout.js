@@ -27,28 +27,107 @@
 // export default LogoutButton;
 // -------------------------
 
-"use client"; // Ensure Next.js client-side execution
+// "use client"; // Ensure Next.js client-side execution
 
+// import React, { useContext } from "react";
+// import Cookies from "js-cookie";
+// import { useRouter } from "next/navigation";
+// // import { AuthContext } from "../context/context"; // Ensure this is correctly imported
+
+// const LogoutButton = () => {
+// //   const { setUser, setToken } = useContext(AuthContext);
+//   const router = useRouter(); // Initialize Next.js router
+
+//   const handleLogout = () => {
+//     // if (setUser && setToken) {
+//     //   setUser(null); // Clear user state
+//     //   setToken(null); // Clear token state
+//     // }
+//     Cookies.remove("token"); // Remove token from cookies
+//     sessionStorage.removeItem("tokenForSessionStorage"); // Correct method to remove sessionStorage item
+
+//     // console.log("User logged out successfully");
+
+//     router.push("/"); // Use Next.js navigation
+//   };
+
+//   return (
+//     <button
+//       onClick={handleLogout}
+//       className="w-full px-2 py-1 rounded-lg hover:border hover:bg-gradient-to-r from-gray-800 to-blue-800 hover:text-white transition duration-100"
+//     >
+//       Logout
+//     </button>
+//   );
+// };
+
+// export default LogoutButton;
+// --------------------------
+// 'use client'
+// import React, { useContext } from "react";
+// import Cookies from "js-cookie";
+// // import { useRouter } from "next/router";
+// import { useRouter } from "next/navigation";
+// // import { AuthContext } from "../context/context"; // Ensure this is correctly imported
+
+// const LogoutButton = () => {
+//   // const { setUser, setToken } = useContext(AuthContext);
+//   const router = useRouter();
+
+//   const handleLogout = () => {
+    
+//     // Remove authentication tokens
+//     Cookies.remove("token");
+//     sessionStorage.clear();  // Clear all session storage data
+//     localStorage.clear();    // Clear all local storage data
+
+//     // Clear Next.js cache
+//     router.refresh();
+
+//     // Redirect to home page
+//     router.replace("/");
+//   };
+
+//   return (
+//     <button
+//       onClick={handleLogout}
+//       className="w-full px-2 py-1 rounded-lg hover:border hover:bg-gradient-to-r from-gray-800 to-blue-800 hover:text-white transition duration-100"
+//     >
+//       Logout
+//     </button>
+//   );
+// };
+
+// export default LogoutButton;
+
+// ------------------------
+'use client';
 import React, { useContext } from "react";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation"; // Correct router import for Next.js App Router
-// import { AuthContext } from "../context/context"; // Ensure this is correctly imported
+import { useRouter } from "next/navigation";
+import { AuthContext } from "@/Context/contrext";
 
 const LogoutButton = () => {
-//   const { setUser, setToken } = useContext(AuthContext);
-  const router = useRouter(); // Initialize Next.js router
+  const { setUser, setToken, setSession } = useContext(AuthContext);
+  const router = useRouter();
 
   const handleLogout = () => {
-    // if (setUser && setToken) {
-    //   setUser(null); // Clear user state
-    //   setToken(null); // Clear token state
-    // }
-    Cookies.remove("token"); // Remove token from cookies
-    sessionStorage.removeItem("tokenForSessionStorage"); // Correct method to remove sessionStorage item
+    console.log("Logging out...");
 
-    console.log("User logged out successfully");
+    // Clear authentication state
+    setUser(null);
+    setToken(null);
+    setSession(null);
 
-    router.push("/"); // Use Next.js navigation
+    // Remove authentication tokens
+    Cookies.remove("token");
+    sessionStorage.clear();
+    localStorage.clear();
+
+    // Redirect to home page
+    setTimeout(() => {
+      router.replace("/");  // Ensure redirection
+    }, 100);
   };
 
   return (

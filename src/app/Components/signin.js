@@ -121,10 +121,20 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import AppRouts from "@/Constant/Constant";
 import axios from "axios";
+import Cookies from "js-cookie";
+import { useContext } from "react";
+import { AuthContext } from "@/Context/contrext";
 
 const Signin = () => {
-  const [loading, setLoading] = useState(false);
+
+
+  // Access user and token from AuthContext
+  const { user, setUser, setToken, setSession } = useContext(AuthContext);
+  // console.log("User:" , user);
+
+
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -143,32 +153,35 @@ const Signin = () => {
     try {
       const response = await axios.post(AppRouts.signin, { email, password });
       const userInfo = response.data.data.info;
-      console.log("token : ", response.data.data.token);
-
-      console.log("User Info:", userInfo);
-
+      const token = response.data.data.token;
+      console.log("token : ", token);
+      // console.log("User Info:", userInfo);
       setUserDetails(userInfo);
 
+      //****** Update sessionStorage & cookies to maintain tab session
+      Cookies.set("token", token, { expires: 7 });
+      sessionStorage.setItem("tokenForSessionStorage", token);
+      setUser(userInfo);
+      // setSession(token);
+      // setToken(token);
+
+      console.log(user);
+      
       //  Navigate
       if (userInfo.role === "admin") {
         router.push("/AdminDashboard");
-      } 
-      else if (userInfo.role === "employee") {
+      } else if (userInfo.role === "employee") {
         router.push("/EmployeeDashboard");
-      }
-       else if (userInfo.role === "salesPerson") {
+      } else if (userInfo.role === "salesPerson") {
         // router.push("/EmployeeDashboard");
         router.push("/SalesPersonDashboard");
-
-      }
-       else if (userInfo.role === "developer") {
+      } else if (userInfo.role === "developer") {
         router.push("/DeveloperDashBoard");
-      } 
-      else if (userInfo.role === "graphicsDesigner") {
+      } else if (userInfo.role === "graphicsDesigner") {
         router.push("/GraphicsDesignerDashBoard");
-      }
-       else {
+      } else {
         alert("Unauthorized role!");
+        router.push("/");
       }
     } catch (error) {
       alert("ERROR: " + error);

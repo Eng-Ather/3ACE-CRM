@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AppRouts from "@/Constant/Constant";
 import axios from "axios";
 
@@ -8,14 +8,37 @@ const AddNewProject = () => {
   const [loading, setLoading] = useState(false);
   //   const [userDetails, setUserDetails] = useState(null);
   const [newProjectForm, setNewProjectForm] = useState(false);
+  const [allProject, setAllProject] = useState()
+
+
+  useEffect(() => {
+    const fetchAllProjects = async () => {
+      try {
+        const response = await axios.get(AppRouts.getAllProject);
+        setAllProject(response.data.data || []);
+        // console.log(response.data.data);
+        
+        setLoading(false);
+      } catch (error) {
+        alert(error.message);
+        setError(error.message);
+        setLoading(false);
+      }
+    };
+    fetchAllProjects();
+  }, []);
+
+
 
   const handleSubmit = async (e) => {
-    console.log("New Project Details", e.target.email.value);
+    // console.log("New Project Details", e.target.email.value);
+    console.log("New Project Details", e.target.projectCost.value);
     e.preventDefault(); // Form submission ko default behavior se rokne ke liye
 
     const newProjectData = {
       projectTitle: e.target.projectTitle.value,
       projectType: e.target.projectType.value,
+      projectID: `PI-3ACE-TECH-0${allProject.length + 1}0`,
       client: e.target.client.value,
       contactNo: e.target.contactNo.value,
       email: e.target.email.value,
@@ -27,6 +50,8 @@ const AddNewProject = () => {
       actualCompletionDate: e.target.actualCompletionDate.value,
       region: e.target.region.value,
       developer: e.target.developer.value,
+      projectCost: e.target.projectCost.value,
+
     };
 
     console.log("New Project Data:", newProjectData);
@@ -37,6 +62,7 @@ const AddNewProject = () => {
       const response = await axios.post(AppRouts.addNewProject, newProjectData);
       alert("save data sucessfully");
       setNewProjectForm(false);
+      window.location.reload();
     } catch (error) {
       alert("ERROR: " + error);
       setLoading(false);
@@ -73,6 +99,7 @@ const AddNewProject = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              
               {/* Row 1: Project Title and Project Type */}
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="w-full md:w-1/2">
@@ -287,6 +314,21 @@ const AddNewProject = () => {
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter developer name"
                     defaultValue="Not Assigned"
+                  />
+                </div>
+
+                <div className="w-full md:w-1/2">
+                  <label
+                    htmlFor="projectCost"
+                    className="block text-text text-md font-semibold font-serif"
+                  >
+                    Project Cost
+                  </label>
+                  <input
+                    type="string"
+                    name="projectCost"
+                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
+                    required
                   />
                 </div>
               </div>

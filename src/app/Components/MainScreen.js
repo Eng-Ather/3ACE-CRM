@@ -464,6 +464,7 @@ import Image from "next/image";
 import Signin from "./signin";
 import ServicesPage from "./Services";
 import Banner from "@/images/Banner.png";
+import RoleBasedNavigation from "./RoleBaseNavigation";
 
 export default function MainScreen() {
   const recentActivity = [
@@ -530,7 +531,8 @@ export default function MainScreen() {
         <div className=" w-full md:w-1/2 py-5 mx-auto ">
           <ProjectChart />
         </div>
-
+{/* role base navigation */}
+<RoleBasedNavigation/>
         {/* Sign-in Form */}
         <div className="w-full md:w-1/2">
           <Signin />

@@ -6,21 +6,17 @@ import axios from "axios";
 
 const EditButton = ({ id }) => {
   const [editProjectDetails, setEditProjectDetails] = useState(false);
-  const [projectCurrentDetails, setProjectCurrentDetails] = useState()
+  const [projectCurrentDetails, setProjectCurrentDetails] = useState();
   const [loading, setLoading] = useState(false); // Added loading state
 
-//  to get project details
+  //  to get project details
   const fatchData = async () => {
     try {
       const detail = AppRouter.getSpecificProject + id;
       const projectdetails = await axios.get(detail);
-      // const projectdetails = await axios.get(
-      //   `${AppRouter.getSpecificProject}/${id}`
-      // );
       console.log("project details: ", projectdetails.data.data);
-      setProjectCurrentDetails(projectdetails.data.data)
-    } 
-    catch (error) {
+      setProjectCurrentDetails(projectdetails.data.data);
+    } catch (error) {
       alert("error", error.message);
     }
   };
@@ -29,12 +25,11 @@ const EditButton = ({ id }) => {
     console.log("project id", id); // Log the project id
     fatchData();
     setEditProjectDetails(true); // Open the modal
-    
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const updateData = {
       projectTitle: e.target.projectTitle.value,
       projectType: e.target.projectType.value,
@@ -50,22 +45,25 @@ const EditButton = ({ id }) => {
       region: e.target.region.value,
       developer: e.target.developer.value,
     };
-  
+
     console.log("New Project Data:", updateData);
-  
+
     try {
       setLoading(true); // 🔹 Loading state start
-  
-      const response = await axios.put(`${AppRouter.editProject}/${id}`, updateData);
-  
+
+      const response = await axios.put(
+        `${AppRouter.editProject}/${id}`,
+        updateData
+      );
       console.log("Server Response:", response.data);
-  
+
       if (response.status === 200) {
         alert("Project updated successfully!");
         setEditProjectDetails(false); // 🔹 Modal close if successful
+        window.location.reload();
       } else {
         alert("Failed to update project.");
-        setLoading(false)
+        setLoading(false);
       }
     } catch (error) {
       console.error("Error updating project:", error);
@@ -74,7 +72,7 @@ const EditButton = ({ id }) => {
       setLoading(false); // 🔹 Ensure loading state stops
     }
   };
-  
+
   return (
     <>
       {/* Edit Button */}
@@ -200,8 +198,10 @@ const EditButton = ({ id }) => {
                     name="onboarding"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     defaultValue={
-                      projectCurrentDetails?.onboarding 
-                        ? new Date(projectCurrentDetails.onboarding).toISOString().split("T")[0] 
+                      projectCurrentDetails?.onboarding
+                        ? new Date(projectCurrentDetails.onboarding)
+                            .toISOString()
+                            .split("T")[0]
                         : ""
                     }
                   />
@@ -222,7 +222,7 @@ const EditButton = ({ id }) => {
                     name="salesPerson"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter sales person name"
-                    defaultValue={projectCurrentDetails?.salesPerson}                    
+                    defaultValue={projectCurrentDetails?.salesPerson}
                   />
                 </div>
                 <div className="w-full md:w-1/2">
@@ -235,7 +235,7 @@ const EditButton = ({ id }) => {
                   <select
                     name="status"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
-                    defaultValue={projectCurrentDetails?.status }                    
+                    defaultValue={projectCurrentDetails?.status}
                   >
                     <option value="Completed">Completed</option>
                     <option value="Pending">Pending</option>
@@ -256,7 +256,7 @@ const EditButton = ({ id }) => {
                     type="text"
                     name="link"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
-                    defaultValue={projectCurrentDetails?.link }                    
+                    defaultValue={projectCurrentDetails?.link}
                     placeholder="Enter project link"
                   />
                 </div>
@@ -272,11 +272,12 @@ const EditButton = ({ id }) => {
                     name="proposedCompletionDate"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     defaultValue={
-                      projectCurrentDetails?.proposedCompletionDate 
-                        ? new Date(projectCurrentDetails.proposedCompletionDate).toISOString().split("T")[0] 
+                      projectCurrentDetails?.proposedCompletionDate
+                        ? new Date(projectCurrentDetails.proposedCompletionDate)
+                            .toISOString()
+                            .split("T")[0]
                         : ""
                     }
-                  
                   />
                 </div>
               </div>
@@ -295,8 +296,10 @@ const EditButton = ({ id }) => {
                     name="actualCompletionDate"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     defaultValue={
-                      projectCurrentDetails?.actualCompletionDate 
-                        ? new Date(projectCurrentDetails.actualCompletionDate).toISOString().split("T")[0] 
+                      projectCurrentDetails?.actualCompletionDate
+                        ? new Date(projectCurrentDetails.actualCompletionDate)
+                            .toISOString()
+                            .split("T")[0]
                         : ""
                     }
                   />
@@ -313,8 +316,7 @@ const EditButton = ({ id }) => {
                     name="region"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter region"
-                    defaultValue={projectCurrentDetails?.region }                    
-                    
+                    defaultValue={projectCurrentDetails?.region}
                   />
                 </div>
               </div>
@@ -333,8 +335,7 @@ const EditButton = ({ id }) => {
                     name="developer"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter developer name"
-                    defaultValue={projectCurrentDetails?.developer }                    
-                    
+                    defaultValue={projectCurrentDetails?.developer}
                   />
                 </div>
               </div>

@@ -6,8 +6,19 @@ import AdminNavbar from "../AdminComponent/AdminNavbar";
 // import AdminHerosection from "../AdminComponent/Projects";
 import Projects from "../AdminComponent/Projects";
 import AddNewProject from "@/app/Components/AddNewProject";
+import { useContext } from "react";
+import { AuthContext } from "@/Context/contrext";
+import RoleBasedNavigation from "@/app/Components/RoleBaseNavigation";
 
 export default function AdminDashboard() {
+
+ // Access user and token from AuthContext
+ const { user, setUser, setToken, setSession } = useContext(AuthContext);
+ console.log("User:" , user);
+
+
+
+
   // Dummy data for demonstration
   const totalEmployees = 50;
   const pendingProjects = 12;
@@ -15,6 +26,9 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900">
+
+     {/* <RoleBasedNavigation/> */}
+
       {/* Navbar */}
       <AdminNavbar />
   
