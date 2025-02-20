@@ -9,7 +9,6 @@
 // const { user, setUser, setToken, setSession } = useContext(AuthContext);
 // console.log("User:" , user);
 
-
 //     return (
 //       <div>
 //         <h1>This is Sales Person DASHBOARD</h1>
@@ -17,10 +16,10 @@
 //       </div>
 //     );
 //   };
-  
+
 //   export default SalesPerson;
 
-'use client'
+"use client";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -29,6 +28,8 @@ import EditButton from "@/app/Components/EditProject";
 import DeleteButton from "@/app/Components/DeleteProject";
 import ProjectDetails from "@/app/Components/projectDetails";
 import ProjectChart from "@/app/Components/ProjectGraph";
+import SalesNavbar from "../SalesPersonComponent/SalesNavbar";
+import AddNewProject from "@/app/Components/AddNewProject";
 
 const SalesPerson = () => {
   const [projects, setProjects] = useState([]);
@@ -116,33 +117,39 @@ const SalesPerson = () => {
 
   return (
     <div className=" min-h-screen text-text ">
-    
-    <div className="flex flex-col items-center w-full gap-2 md:flex-row md:justify-between">
+      {/* navbar */}
+      <SalesNavbar />
 
-  {/* Search Bar Section */}
-  <div className=" w-full md:w-1/2 flex flex-col items-end justify-end">
-    <div className="w-full sm:w-3/4 flex flex-col sm:flex-row items-center gap-4">
-      <input
-        className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
-        type="search"
-        placeholder="Search here..."
-        value={searchTerm}
-        onChange={handleSearch}
-      />
-      <div className="w-full sm:w-1/3 text-white bg-heading text-center text-headingColor shadow-md rounded-lg py-2 px-3">
-        <span className="text-sm md:text-lg font-serif">
-          {!searchTerm ? "No" : filteredProjects.length} result(s) found
-        </span>
+      {/* Header Section */}
+      <div className="w-full flex gap-10  shadow-md items-center underline decoration-heading p-4 ">
+        <h2 className="text-2xl  font-serif text-heading">Project Details</h2>
+        <AddNewProject />
       </div>
-    </div>
-  </div>
 
-   {/* Project Chart Section */}
-   <div className=" w-full md:w-1/2 flex justify-center items-end">
-    <ProjectChart />
-  </div>
-</div>
+      <div className="flex flex-col items-center w-full gap-2 md:flex-row md:justify-between">
+        {/* Search Bar Section */}
+        <div className=" w-full md:w-1/2 flex flex-col items-end justify-end">
+          <div className="w-full sm:w-3/4 flex flex-col sm:flex-row items-center gap-4">
+            <input
+              className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
+              type="search"
+              placeholder="Search here..."
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+            <div className="w-full sm:w-1/3 text-white text-sm bg-heading text-center text-heading shadow-md rounded-lg py-2 px-3">
+              <span className="text-sm md:text-lg font-serif">
+                {!searchTerm ? "No" : filteredProjects.length} result(s) found
+              </span>
+            </div>
+          </div>
+        </div>
 
+        {/* Project Chart Section */}
+        <div className=" w-full md:w-1/2 flex justify-center items-end pt-3">
+          <ProjectChart />
+        </div>
+      </div>
 
       {/* Project List Table */}
       <div className="bg-white py-6 rounded-lg shadow-md overflow-x-auto">
@@ -246,5 +253,3 @@ const SalesPerson = () => {
   );
 };
 export default SalesPerson;
-
-  
