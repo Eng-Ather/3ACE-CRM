@@ -137,7 +137,7 @@ const SalesPerson = () => {
               value={searchTerm}
               onChange={handleSearch}
             />
-            <div className="w-full sm:w-1/3 text-white text-sm bg-heading text-center text-heading shadow-md rounded-lg py-2 px-3">
+            <div className="w-fit sm:w-1/3 text-white text-sm bg-heading text-center text-heading shadow-md rounded-lg py-2 px-3">
               <span className="text-sm md:text-lg font-serif">
                 {!searchTerm ? "No" : filteredProjects.length} result(s) found
               </span>
