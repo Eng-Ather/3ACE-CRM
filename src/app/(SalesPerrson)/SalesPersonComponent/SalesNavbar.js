@@ -24,7 +24,7 @@ export default function SalesNavbar() {
   }, []);
 
   return (
-    <nav className="bg-gradient-to-r from-gray-900 to-blue-900 text-white px-6 py-4 flex justify-between items-center relative shadow-md">
+    <nav className="bg-gradient-to-r from-gray-900 to-blue-900 text-white px-6 py-2 flex justify-between items-center relative shadow-md">
       {/* Logo */}
       <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white">
         <Image

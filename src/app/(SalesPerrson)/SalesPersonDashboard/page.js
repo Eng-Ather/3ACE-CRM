@@ -122,14 +122,14 @@ const SalesPerson = () => {
 
       {/* Header Section */}
       <div className="w-full flex gap-10  shadow-md items-center underline decoration-heading p-4 ">
-        <h2 className="text-2xl  font-serif text-heading">Project Details</h2>
+        <h2 className="text-md md:text-xl  font-serif text-heading">Project Details</h2>
         <AddNewProject />
       </div>
 
       <div className="flex flex-col items-center w-full gap-2 md:flex-row md:justify-between">
         {/* Search Bar Section */}
-        <div className=" w-full md:w-1/2 flex flex-col items-end justify-end">
-          <div className="w-full sm:w-3/4 flex flex-col sm:flex-row items-center gap-4">
+        <div className=" w-full md:w-1/2 flex flex-col items-end justify-end ">
+          <div className="w-full sm:w-3/4 flex flex-col sm:flex-row items-center gap-4 p-2">
             <input
               className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
               type="search"
@@ -152,7 +152,7 @@ const SalesPerson = () => {
       </div>
 
       {/* Project List Table */}
-      <div className="bg-white py-6 rounded-lg shadow-md overflow-x-auto">
+      <div className="bg-white py-6 rounded-lg overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
             <tr className="bg-gray-200 font-serif text-left">
@@ -179,7 +179,7 @@ const SalesPerson = () => {
               filteredProjects.map((project, index) => (
                 <tr
                   key={index}
-                  className="hover:bg-gray-100 text-sm font-serif"
+                  className="hover:bg-gray-100 hover:border border-black text-sm font-serif"
                 >
                   <td className="p-3">{index + 1}</td>
                   <td className="p-3">{project.projectID}</td>
