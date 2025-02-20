@@ -320,36 +320,33 @@ const Projects = () => {
 
   return (
     <div className=" min-h-screen text-text ">
-    
-    <div className="flex flex-col items-center w-full gap-2 md:flex-row md:justify-between">
+      <div className="flex flex-col items-center w-full gap-2 md:flex-row md:justify-between">
+        {/* Search Bar Section */}
+        <div className=" w-full md:w-1/2 flex flex-col items-end justify-end">
+          <div className="w-full sm:w-3/4 flex flex-col sm:flex-row items-center gap-4 p-2">
+            <input
+              className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
+              type="search"
+              placeholder="Search here..."
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+            <div className="w-full sm:w-3/4  text-white text-sm bg-heading text-center text-heading shadow-md rounded-lg py-2 px-3">
+              <span className="text-sm md:text-lg font-serif">
+                {!searchTerm ? "No" : filteredProjects.length} result(s) found
+              </span>
+            </div>
+          </div>
+        </div>
 
-  {/* Search Bar Section */}
-  <div className=" w-full md:w-1/2 flex flex-col items-end justify-end">
-    <div className="w-full sm:w-3/4 flex flex-col sm:flex-row items-center gap-4">
-      <input
-        className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
-        type="search"
-        placeholder="Search here..."
-        value={searchTerm}
-        onChange={handleSearch}
-      />
-      <div className="w-full sm:w-1/3 text-white bg-heading text-center text-headingColor shadow-md rounded-lg py-2 px-3">
-        <span className="text-sm md:text-lg font-serif">
-          {!searchTerm ? "No" : filteredProjects.length} result(s) found
-        </span>
+        {/* Project Chart Section */}
+        <div className=" w-full md:w-1/2 flex justify-center items-end">
+          <ProjectChart />
+        </div>
       </div>
-    </div>
-  </div>
-
-   {/* Project Chart Section */}
-   <div className=" w-full md:w-1/2 flex justify-center items-end">
-    <ProjectChart />
-  </div>
-</div>
-
 
       {/* Project List Table */}
-      <div className="bg-white py-6 rounded-lg shadow-md overflow-x-auto">
+      <div className="bg-white py-6 rounded-lg  overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
             <tr className="bg-gray-200 font-serif text-left">
@@ -376,7 +373,7 @@ const Projects = () => {
               filteredProjects.map((project, index) => (
                 <tr
                   key={index}
-                  className="hover:bg-gray-100 text-sm font-serif"
+                  className="hover:bg-gray-100 hover:border border-black text-sm font-serif"
                 >
                   <td className="p-3">{index + 1}</td>
                   <td className="p-3">{project.projectID}</td>

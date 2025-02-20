@@ -121,8 +121,8 @@ const SalesPerson = () => {
       <SalesNavbar />
 
       {/* Header Section */}
-      <div className="w-full flex gap-10  shadow-md items-center underline decoration-heading p-4 ">
-        <h2 className="text-md md:text-xl  font-serif text-heading">Project Details</h2>
+      <div className="w-full flex gap-10 shadow-md items-center underline decoration-heading p-4 ">
+        <h2 className="text-md md:text-2xl  font-serif text-heading">Project Details</h2>
         <AddNewProject />
       </div>
 
