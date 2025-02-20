@@ -4,7 +4,7 @@
 import { createContext, useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
-import AppRouts from "@/Constant/Constant";
+import AppRouts from "@/Constant/Constant.js";
 
 // Create a context
 export const AuthContext = createContext();

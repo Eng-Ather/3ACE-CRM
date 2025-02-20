@@ -232,6 +232,7 @@ import AppRouts from "@/Constant/Constant";
 import EditButton from "@/app/Components/EditProject";
 import DeleteButton from "@/app/Components/DeleteProject";
 import ProjectDetails from "@/app/Components/projectDetails";
+import ProjectChart from "@/app/Components/ProjectGraph";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -318,47 +319,34 @@ const Projects = () => {
   ).length;
 
   return (
-    <div className="min-h-screen bg-background text-text p-4">
-      
-      {/* Stats Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-white p-6 rounded-lg shadow-md flex justify-between">
-          <h2 className="text-md font-semibold text-subheading">
-            Total Projects
-          </h2>
-          <p className="text-3xl font-bold text-heading">{totalProjects}</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md flex justify-between">
-          <h2 className="text-md font-semibold text-subheading">
-            Pending Projects
-          </h2>
-          <p className="text-3xl font-bold text-heading">{pendingProjects}</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md flex justify-between">
-          <h2 className="text-md font-semibold text-subheading">
-            Completed Projects
-          </h2>
-          <p className="text-3xl font-bold text-heading">{completedProjects}</p>
-        </div>
-      </div>
+    <div className=" min-h-screen text-text ">
+    
+    <div className="flex flex-col items-center w-full gap-2 md:flex-row md:justify-between">
 
-      {/* search bar */}
-      <div className="flex justify-end ">
-        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-1/2 mb-6">
-          <input
-            className="w-full sm:w-2/3 py-2 px-4 rounded-lg border border-blue-300 focus:outline-none focus:ring focus:ring-blue-500"
-            type="search"
-            placeholder="Search here..."
-            value={searchTerm}
-            onChange={handleSearch}
-          />
-          <div className="w-full sm:w-1/3 bg-blue-50 text-center text-headingColor shadow-md rounded-lg py-2 px-3">
-              <span className="text-sm md:text-lg font-serif">
-                {!searchTerm ? "No" : filteredProjects.length} result(s) found
-              </span>
-            </div>
-        </div>
+  {/* Search Bar Section */}
+  <div className=" w-full md:w-1/2 flex flex-col items-end justify-end">
+    <div className="w-full sm:w-3/4 flex flex-col sm:flex-row items-center gap-4">
+      <input
+        className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
+        type="search"
+        placeholder="Search here..."
+        value={searchTerm}
+        onChange={handleSearch}
+      />
+      <div className="w-full sm:w-1/3 text-white bg-heading text-center text-headingColor shadow-md rounded-lg py-2 px-3">
+        <span className="text-sm md:text-lg font-serif">
+          {!searchTerm ? "No" : filteredProjects.length} result(s) found
+        </span>
       </div>
+    </div>
+  </div>
+
+   {/* Project Chart Section */}
+   <div className=" w-full md:w-1/2 flex justify-center items-end">
+    <ProjectChart />
+  </div>
+</div>
+
 
       {/* Project List Table */}
       <div className="bg-white py-6 rounded-lg shadow-md overflow-x-auto">
