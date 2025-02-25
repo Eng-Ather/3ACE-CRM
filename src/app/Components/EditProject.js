@@ -49,7 +49,7 @@ const EditButton = ({ id }) => {
     console.log("New Project Data:", updateData);
 
     try {
-      setLoading(true); // 🔹 Loading state start
+      setLoading(true); // Loading state start
 
       const response = await axios.put(
         `${AppRouter.editProject}/${id}`,
@@ -59,7 +59,7 @@ const EditButton = ({ id }) => {
 
       if (response.status === 200) {
         alert("Project updated successfully!");
-        setEditProjectDetails(false); // 🔹 Modal close if successful
+        setEditProjectDetails(false); // Modal close if successful
         window.location.reload();
       } else {
         alert("Failed to update project.");
@@ -69,7 +69,7 @@ const EditButton = ({ id }) => {
       console.error("Error updating project:", error);
       alert("Error updating project, please try again.");
     } finally {
-      setLoading(false); // 🔹 Ensure loading state stops
+      setLoading(false); // Ensure loading state stops
     }
   };
 

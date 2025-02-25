@@ -4,19 +4,19 @@ import { useState } from "react";
 import axios from "axios";
 import AppRouts from "@/Constant/Constant";
 
-const ProjectDetails = ({ id }) => {
+const ProjectDetails = ({ Pid }) => {
   const [loading, setLoading] = useState(false);
 
   const handleDetails = async () => {
-    if (!id) {
-      console.error("No ID provided for deletion.");
+    if (!Pid) {
+      console.error("No Pid provided for deletion.");
       return;
     }
 
-    console.log("id" , id);
+    console.log("Pid" , Pid);
     
 
-    const confirmDelete = window.confirm(`Are you sure you want to delete this project? ID: ${id}`);
+    const confirmDelete = window.confirm(`Are you sure you want to delete this project? Pid: ${Pid}`);
     if (!confirmDelete) return;
 
     setLoading(true);
@@ -40,7 +40,7 @@ const ProjectDetails = ({ id }) => {
         onClick={handleDetails}
         type="button"
         className="bg-green-500 text-white px-2 py-1 rounded-md hover:bg-green-700 transition disabled:bg-gray-400"
-        disabled={loading}
+        // disabled={loading}
       >Details
         {/* {loading ? "Loading..." : "Details"} */}
       </button>

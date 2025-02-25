@@ -1,9 +1,9 @@
 const dev_url = "http://localhost:4000";
 
- const prod_url = 'https://3-ace-crm-backend.vercel.app';
+//  const prod_url = 'https://3-ace-crm-backend.vercel.app';
 
-// const Base_URL = dev_url;
-const Base_URL = prod_url;
+const Base_URL = dev_url;
+// const Base_URL = prod_url;
 
 
 const AppRouts = {
@@ -16,6 +16,7 @@ const AppRouts = {
   editProject: Base_URL + "/projects",
   deleteProject: Base_URL + "/projects",
   addNewProject: Base_URL + "/projects/newproject",
+  updateProject: Base_URL + "/editProjectDetails/addDetails",
 
 };
 export default AppRouts;

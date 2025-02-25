@@ -30,6 +30,7 @@ import ProjectDetails from "@/app/Components/projectDetails";
 import ProjectChart from "@/app/Components/ProjectGraph";
 import SalesNavbar from "../SalesPersonComponent/SalesNavbar";
 import AddNewProject from "@/app/Components/AddNewProject";
+import UpdateProject from "@/app/Components/UpdateProject";
 
 const SalesPerson = () => {
   const [projects, setProjects] = useState([]);
@@ -115,6 +116,14 @@ const SalesPerson = () => {
     (p) => p.status === "Completed"
   ).length;
 
+  if (loading) {
+    return (
+      <div className="text-center my-96 text-6xl font-semibold">
+        Loading projects...
+      </div>
+    );
+  }
+
   return (
     <div className=" min-h-screen text-text ">
       {/* navbar */}
@@ -122,7 +131,9 @@ const SalesPerson = () => {
 
       {/* Header Section */}
       <div className="w-full flex gap-10 shadow-md items-center underline decoration-heading p-4 ">
-        <h2 className="text-md md:text-2xl  font-serif text-heading">Project Details</h2>
+        <h2 className="text-md md:text-4xl font-serif text-heading">
+          Project Details
+        </h2>
         <AddNewProject />
       </div>
 
@@ -137,9 +148,9 @@ const SalesPerson = () => {
               value={searchTerm}
               onChange={handleSearch}
             />
-            <div className= "w-full sm:w-3/4  text-white text-sm bg-heading text-center text-heading shadow-md rounded-lg py-2 px-3">
+            <div className="w-full sm:w-3/4  text-white text-sm bg-heading text-center text-heading shadow-md rounded-lg py-2 px-3">
               <span className="text-sm md:text-lg font-serif">
-                {!searchTerm ? "No" : filteredProjects.length} result(s) found
+                {!searchTerm ? "Search here" : `${filteredProjects.length} result(s) found`}
               </span>
             </div>
           </div>
@@ -157,20 +168,25 @@ const SalesPerson = () => {
           <thead>
             <tr className="bg-gray-200 font-serif text-left">
               <th className="p-3 text-md">Sr</th>
-              <th className="p-3 text-md">Project-ID</th>
-              <th className="p-3 text-md">Title</th>
+              <th className="p-3 text-md">Client & Project Title</th>
+              {/* <th className="p-3 text-md">Title</th> */}
+
               <th className="p-3 text-md">Type</th>
-              <th className="p-3 text-md">Client</th>
               <th className="p-3 text-md">Contact</th>
               <th className="p-3 text-md">Email</th>
+              {/* <th className="p-3 text-md">Project-ID</th> */}
+
               <th className="p-3 text-md">Cost</th>
-              <th className="p-3 text-md">Onboarding</th>
-              <th className="p-3 text-md">Sales Person</th>
+              <th className="p-3 text-md">Sales <br/> Person</th>
+
+              <th className="p-3 text-md">Refrence <br/> Link</th>
+              <th className="p-3 text-md">Developer / <br/> Designer</th>
+
+              <th className="p-3 text-md">Onboarding <br/> Date</th>
+              <th className="p-3 text-md">Proposed <br/> Completion</th>
+              <th className="p-3 text-md">Actual <br/> Completion</th>
               <th className="p-3 text-md">Status</th>
-              <th className="p-3 text-md">Link</th>
-              <th className="p-3 text-md">Developer</th>
-              <th className="p-3 text-md">Proposed Completion</th>
-              <th className="p-3 text-md">Actual Completion</th>
+
               <th className="p-3 text-md text-center">Actions</th>
             </tr>
           </thead>
@@ -182,28 +198,17 @@ const SalesPerson = () => {
                   className="hover:bg-gray-100 hover:border border-black text-sm font-serif"
                 >
                   <td className="p-3">{index + 1}</td>
-                  <td className="p-3">{project.projectID}</td>
-                  <td className="p-3">{project.projectTitle}</td>
+                  <td className="p-3">{`${project.client} ||  ${project.projectTitle} `}</td>
+                  {/* <td className="p-3">{project.projectTitle}</td> */}
+
                   <td className="p-3">{project.projectType}</td>
-                  <td className="p-3">{project.client}</td>
                   <td className="p-3">{project.contactNo}</td>
                   <td className="p-3">{project.email}</td>
+
+                  {/* <td className="p-3">{project._id}</td> */}
                   <td className="p-3">{project.projectCost}</td>
-                  <td className="p-3">
-                    {new Date(project.onboarding).toISOString().split("T")[0]}
-                  </td>
                   <td className="p-3">{project.salesPerson}</td>
-                  <td
-                    className={`p-3 font-semibold ${
-                      project.status === "Completed"
-                        ? "text-green-600"
-                        : project.status === "Pending"
-                        ? "text-red-600"
-                        : "text-yellow-600"
-                    }`}
-                  >
-                    {project.status}
-                  </td>
+
                   <td className="p-3">
                     <a
                       href={project.link}
@@ -214,7 +219,13 @@ const SalesPerson = () => {
                       View
                     </a>
                   </td>
+
                   <td className="p-3">{project.developer}</td>
+
+                  <td className="p-3">
+                    {new Date(project.onboarding).toISOString().split("T")[0]}
+                  </td>
+
                   <td className="p-3">
                     {
                       new Date(project.proposedCompletionDate)
@@ -229,8 +240,26 @@ const SalesPerson = () => {
                         .split("T")[0]
                     }
                   </td>
+
+                  <td
+                    className={`p-3 font-semibold ${
+                      project.status === "Completed"
+                        ? "text-green-600"
+                        : project.status === "Pending"
+                        ? "text-red-600"
+                        : "text-yellow-600"
+                    }`}
+                  >
+                    {project.status}
+                  </td>
+
                   <td className="p-3 flex gap-2">
-                    <EditButton id={project._id} />
+                    <UpdateProject
+                      Pid={project._id}
+                      projectTitle={project.projectTitle}
+                    />
+
+                    {/* <EditButton id={project._id} /> */}
                     {/* <DeleteButton
                       id={project._id}
                       Title={project.projectTitle}

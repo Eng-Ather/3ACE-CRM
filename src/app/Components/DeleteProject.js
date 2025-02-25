@@ -21,7 +21,7 @@ const DeleteButton = ({ id, Title }) => {
       console.log("Deleting project with ID:", id);
       const response = await axios.delete(`${AppRouts.deleteProject}/${id}`);
       console.log("Deletion successful:", response.data);
-      // Re load page 
+      // Reload page 
       window.location.reload();
 
     } catch (error) {

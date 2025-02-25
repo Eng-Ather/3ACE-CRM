@@ -36,7 +36,7 @@ export default function AdminDashboard() {
       <div className=" py-3 mx-auto bg-white shadow-md rounded-lg">
         {/* Header Section */}
         <div className="w-full flex gap-10 shadow-md items-center underline decoration-heading p-4 mb-6">
-          <h2 className="text-md md:text-2xl font-serif text-heading">Project Details</h2>
+          <h2 className="text-md md:text-4xl font-serif text-heading">Project Details</h2>
           
           <AddNewProject />
         </div>
