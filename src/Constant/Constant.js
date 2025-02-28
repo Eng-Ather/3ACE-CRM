@@ -12,11 +12,14 @@ const AppRouts = {
  getCurrentUserInfo: Base_URL + "/user/currentUserInfo",
 
   getAllProject: Base_URL + "/projects/allproject",
-  getSpecificProject: Base_URL + "/projects/",
+  getSpecificProject: Base_URL + "/projects",
   editProject: Base_URL + "/projects",
   deleteProject: Base_URL + "/projects",
   addNewProject: Base_URL + "/projects/newproject",
   updateProject: Base_URL + "/editProjectDetails/addDetails",
+
+  assignProjects: Base_URL + "/projects/assignto", //to get project assigned to employee
+
 
 };
 export default AppRouts;

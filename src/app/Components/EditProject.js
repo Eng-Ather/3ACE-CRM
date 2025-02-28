@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import AppRouter from "@/Constant/Constant";
+// import AppRouter from "@/Constant/Constant";
+import AppRouts from "@/Constant/Constant";
 import axios from "axios";
 
 const EditButton = ({ id }) => {
@@ -12,8 +13,7 @@ const EditButton = ({ id }) => {
   //  to get project details
   const fatchData = async () => {
     try {
-      const detail = AppRouter.getSpecificProject + id;
-      const projectdetails = await axios.get(detail);
+      const projectdetails = await axios.get(`${AppRouts.deleteProject}/${id}`);
       console.log("project details: ", projectdetails.data.data);
       setProjectCurrentDetails(projectdetails.data.data);
     } catch (error) {
@@ -43,7 +43,7 @@ const EditButton = ({ id }) => {
       proposedCompletionDate: e.target.proposedCompletionDate.value,
       actualCompletionDate: e.target.actualCompletionDate.value,
       region: e.target.region.value,
-      developer: e.target.developer.value,
+      assignto: e.target.assignto.value,
     };
 
     console.log("New Project Data:", updateData);
@@ -52,7 +52,7 @@ const EditButton = ({ id }) => {
       setLoading(true); // Loading state start
 
       const response = await axios.put(
-        `${AppRouter.editProject}/${id}`,
+        `${AppRouts.editProject}/${id}`,
         updateData
       );
       console.log("Server Response:", response.data);
@@ -321,21 +321,21 @@ const EditButton = ({ id }) => {
                 </div>
               </div>
 
-              {/* Row 7: Developer */}
+              {/* Row 7: assignto */}
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="w-full md:w-1/2">
                   <label
-                    htmlFor="developer"
+                    htmlFor="assignto"
                     className="block text-text text-md font-semibold font-serif"
                   >
-                    Developer
+                  assignto / Designer
                   </label>
                   <input
                     type="text"
-                    name="developer"
+                    name="assignto"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
-                    placeholder="Enter developer name"
-                    defaultValue={projectCurrentDetails?.developer}
+                    placeholder="Enter assignto name"
+                    defaultValue={projectCurrentDetails?.assignto}
                   />
                 </div>
               </div>

@@ -1,24 +1,3 @@
-// 'use client'
-
-// import LogoutButton from "@/app/Components/Logout";
-// import { useContext } from "react";
-// import { AuthContext } from "@/Context/contrext";
-
-// const SalesPerson = () => {
-// // Access user and token from AuthContext
-// const { user, setUser, setToken, setSession } = useContext(AuthContext);
-// console.log("User:" , user);
-
-//     return (
-//       <div>
-//         <h1>This is Sales Person DASHBOARD</h1>
-//         <LogoutButton/>
-//       </div>
-//     );
-//   };
-
-//   export default SalesPerson;
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -31,6 +10,9 @@ import ProjectChart from "@/app/Components/ProjectGraph";
 import SalesNavbar from "../SalesPersonComponent/SalesNavbar";
 import AddNewProject from "@/app/Components/AddNewProject";
 import UpdateProject from "@/app/Components/UpdateProject";
+import Navbar from "@/app/Components/DashboardNavebar";
+// import EmployeeDashBoard from "@/app/(EmployePannel)/EmployeeDashboard/page";
+import EmployeeNavbar from "@/app/Components/EmployeNavebar";
 
 const SalesPerson = () => {
   const [projects, setProjects] = useState([]);
@@ -127,7 +109,7 @@ const SalesPerson = () => {
   return (
     <div className=" min-h-screen text-text ">
       {/* navbar */}
-      <SalesNavbar />
+      <EmployeeNavbar />
 
       {/* Header Section */}
       <div className="w-full flex gap-10 shadow-md items-center underline decoration-heading p-4 ">
@@ -150,7 +132,9 @@ const SalesPerson = () => {
             />
             <div className="w-full sm:w-3/4  text-white text-sm bg-heading text-center text-heading shadow-md rounded-lg py-2 px-3">
               <span className="text-sm md:text-lg font-serif">
-                {!searchTerm ? "Search here" : `${filteredProjects.length} result(s) found`}
+                {!searchTerm
+                  ? "Search here"
+                  : `${filteredProjects.length} result(s) found`}
               </span>
             </div>
           </div>
@@ -177,14 +161,26 @@ const SalesPerson = () => {
               {/* <th className="p-3 text-md">Project-ID</th> */}
 
               <th className="p-3 text-md">Cost</th>
-              <th className="p-3 text-md">Sales <br/> Person</th>
+              <th className="p-3 text-md">
+                Sales <br /> Person
+              </th>
 
-              <th className="p-3 text-md">Refrence <br/> Link</th>
-              <th className="p-3 text-md">Developer / <br/> Designer</th>
+              <th className="p-3 text-md">
+                Refrence <br /> Link
+              </th>
+              <th className="p-3 text-md">
+                Developer / <br /> Designer
+              </th>
 
-              <th className="p-3 text-md">Onboarding <br/> Date</th>
-              <th className="p-3 text-md">Proposed <br/> Completion</th>
-              <th className="p-3 text-md">Actual <br/> Completion</th>
+              <th className="p-3 text-md">
+                Onboarding <br /> Date
+              </th>
+              <th className="p-3 text-md">
+                Proposed <br /> Completion
+              </th>
+              <th className="p-3 text-md">
+                Actual <br /> Completion
+              </th>
               <th className="p-3 text-md">Status</th>
 
               <th className="p-3 text-md text-center">Actions</th>
@@ -220,7 +216,8 @@ const SalesPerson = () => {
                     </a>
                   </td>
 
-                  <td className="p-3">{project.developer}</td>
+                  <td className="p-3">{project.assignto}<br/>
+                  {new Date(project.assignedDate).toISOString().split("T")[0]}</td>
 
                   <td className="p-3">
                     {new Date(project.onboarding).toISOString().split("T")[0]}

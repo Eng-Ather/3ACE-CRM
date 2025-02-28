@@ -299,7 +299,7 @@ const AddNewProject = () => {
                 </div>
               </div>
 
-              {/* Row 7: Developer */}
+              {/* Row 7: Developer  & Designer*/}
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="w-full md:w-1/2">
                   <label
