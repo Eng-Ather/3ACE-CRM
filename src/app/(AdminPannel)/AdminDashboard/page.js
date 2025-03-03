@@ -30,7 +30,7 @@ export default function AdminDashboard() {
      {/* <RoleBasedNavigation/> */}
 
       {/* Navbar */}
-      <AdminNavbar />
+      {/* <AdminNavbar /> */}
   
       {/* Main Content */}
       <div className=" py-3 mx-auto bg-white shadow-md rounded-lg">

@@ -4,6 +4,7 @@ import AppRouts from "@/Constant/Constant";
 import EditButton from "@/app/Components/EditProject";
 import DeleteButton from "@/app/Components/DeleteProject";
 import ProjectDetails from "@/app/Components/projectDetails";
+import UpdateProject from "@/app/Components/UpdateProject";
 import ProjectChart from "@/app/Components/ProjectGraph";
 
 const Projects = () => {
@@ -46,19 +47,19 @@ const Projects = () => {
         : "";
 
       return (
-        project.projectTitle.toLowerCase().includes(searchLower) ||
-        project.projectType.toLowerCase().includes(searchLower) ||
-        project.client.toLowerCase().includes(searchLower) ||
-        project.contactNo.toLowerCase().includes(searchLower) ||
-        project.email.toLowerCase().includes(searchLower) ||
-        project.projectCost.toString().includes(searchLower) ||
-        project.onboarding.toLowerCase().includes(searchLower) ||
-        project.salesPerson.toLowerCase().includes(searchLower) ||
-        project.status.toLowerCase().includes(searchLower) ||
-        project.link.toLowerCase().includes(searchLower) ||
-        project.developer.toLowerCase().includes(searchLower) ||
-        proposedDate.includes(searchLower) ||
-        actualDate.includes(searchLower)
+        project.projectTitle?.toLowerCase().includes(searchLower) ||
+        project.projectType?.toLowerCase().includes(searchLower) ||
+        project.client?.toLowerCase().includes(searchLower) ||
+        project.contactNo?.toLowerCase().includes(searchLower) ||
+        project.email?.toLowerCase().includes(searchLower) ||
+        project.projectCost?.toString().includes(searchLower) ||
+        project.onboarding?.toLowerCase().includes(searchLower) ||
+        project.salesPerson?.toLowerCase().includes(searchLower) ||
+        project.status?.toLowerCase().includes(searchLower) ||
+        project.link?.toLowerCase().includes(searchLower) ||
+        project.assignto?.toLowerCase().includes(searchLower) ||
+        proposedDate?.includes(searchLower) ||
+        actualDate?.includes(searchLower)
       );
     });
     setFilteredProjects(filteredData);
@@ -103,24 +104,15 @@ const Projects = () => {
             <tr className="bg-gray-200 font-serif text-left">
               <th className="p-3 text-md">Sr</th>
               <th className="p-3 text-md">Client & Project Title</th>
-              {/* <th className="p-3 text-md">Title</th> */}
-
-              <th className="p-3 text-md">Type</th>
-              <th className="p-3 text-md">Contact</th>
-              <th className="p-3 text-md">Email</th>
-              {/* <th className="p-3 text-md">Project-ID</th> */}
-
+              <th className="p-3 text-md">Contacts</th>
               <th className="p-3 text-md">Cost</th>
               <th className="p-3 text-md">Sales <br/> Person</th>
-
               <th className="p-3 text-md">Refrence <br/> Link</th>
               <th className="p-3 text-md">Developer / <br/> Designer</th>
-
               <th className="p-3 text-md">Onboarding <br/> Date</th>
               <th className="p-3 text-md">Proposed <br/> Completion</th>
               <th className="p-3 text-md">Actual <br/> Completion</th>
               <th className="p-3 text-md">Status</th>
-
               <th className="p-3 text-md text-center">Actions</th>
             </tr>
           </thead>
@@ -132,17 +124,10 @@ const Projects = () => {
                   className="hover:bg-gray-100 hover:border border-black text-sm font-serif"
                 >
                   <td className="p-3">{index + 1}</td>
-                  <td className="p-3">{`${project.client} ||  ${project.projectTitle} `}</td>
-                  {/* <td className="p-3">{project.projectTitle}</td> */}
-
-                  <td className="p-3">{project.projectType}</td>
-                  <td className="p-3">{project.contactNo}</td>
-                  <td className="p-3">{project.email}</td>
-
-                  {/* <td className="p-3">{project._id}</td> */}
+                  <td className="p-3">{`${project.client} ||  ${project.projectTitle} `}<br/>{project.projectType} </td>
+                  <td className="p-3">{project.contactNo}<br/>{project.email}</td>
                   <td className="p-3">{project.projectCost}</td>
                   <td className="p-3">{project.salesPerson}</td>
-
                   <td className="p-3">
                     <a
                       href={project.link}
@@ -190,6 +175,8 @@ const Projects = () => {
                     <EditButton id={project._id} />
                     <DeleteButton id={project._id} />
                     <ProjectDetails Pid={project._id} />
+                    <UpdateProject Pid={project._id} projectTitle={project.projectTitle} />
+
                   </td>
                 </tr>
               ))

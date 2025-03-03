@@ -42,10 +42,10 @@ export default function Navbar() {
           <Link href="/" className="hover:scale-110 transition">
             Dashboard
           </Link>
-          <Link href="/" className="hover:scale-110 transition">
+          <Link href="/EmployeesRecord" className="hover:scale-110 transition">
             Employees
           </Link>
-          <Link href="/" className="hover:scale-110 transition">
+          <Link href="/SalesPageForAdmin" className="hover:scale-110 transition">
             Sales
           </Link>
         </div>

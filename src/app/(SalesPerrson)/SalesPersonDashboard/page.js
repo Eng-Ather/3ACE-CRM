@@ -52,19 +52,19 @@ const SalesPerson = () => {
 
       return (
         // project.Sr.includes(searchLower) ||
-        project.projectTitle.toLowerCase().includes(searchLower) ||
-        project.projectType.toLowerCase().includes(searchLower) ||
-        project.client.toLowerCase().includes(searchLower) ||
-        project.contactNo.toLowerCase().includes(searchLower) ||
-        project.email.toLowerCase().includes(searchLower) ||
-        project.projectCost.toString().includes(searchLower) ||
-        project.onboarding.toLowerCase().includes(searchLower) ||
-        project.salesPerson.toLowerCase().includes(searchLower) ||
-        project.status.toLowerCase().includes(searchLower) ||
-        project.link.toLowerCase().includes(searchLower) ||
-        project.developer.toLowerCase().includes(searchLower) ||
-        proposedDate.includes(searchLower) || // Search formatted proposedCompletionDate
-        actualDate.includes(searchLower) // Search formatted actualCompletionDate
+        project.projectTitle?.toLowerCase().includes(searchLower) ||
+        project.projectType?.toLowerCase().includes(searchLower) ||
+        project.client?.toLowerCase().includes(searchLower) ||
+        project.contactNo?.toLowerCase().includes(searchLower) ||
+        project.email?.toLowerCase().includes(searchLower) ||
+        project.projectCost?.includes(searchLower)||
+        project.onboarding?.toLowerCase().includes(searchLower) ||
+        project.salesPerson?.toLowerCase().includes(searchLower) ||
+        project.status?.toLowerCase().includes(searchLower) ||
+        project.link?.toLowerCase().includes(searchLower) ||
+        project.assignto?.toLowerCase().includes(searchLower) ||
+        proposedDate?.includes(searchLower) || // Search formatted proposedCompletionDate
+        actualDate?.includes(searchLower) // Search formatted actualCompletionDate
       );
     });
 
@@ -114,7 +114,7 @@ const SalesPerson = () => {
       {/* Header Section */}
       <div className="w-full flex gap-10 shadow-md items-center underline decoration-heading p-4 ">
         <h2 className="text-md md:text-4xl font-serif text-heading">
-          Project Details
+          Project Details 
         </h2>
         <AddNewProject />
       </div>
