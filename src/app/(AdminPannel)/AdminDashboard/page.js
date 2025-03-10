@@ -8,7 +8,6 @@ import Projects from "../AdminComponent/Projects";
 import AddNewProject from "@/app/Components/AddNewProject";
 import { useContext } from "react";
 import { AuthContext } from "@/Context/contrext";
-import RoleBasedNavigation from "@/app/Components/RoleBaseNavigation";
 
 export default function AdminDashboard() {
 
@@ -16,23 +15,15 @@ export default function AdminDashboard() {
  const { user, setUser, setToken, setSession } = useContext(AuthContext);
  console.log("User:" , user);
 
-
-
-
   // Dummy data for demonstration
   const totalEmployees = 50;
   const pendingProjects = 12;
   const totalSales = 120000;
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900">
+    <div className="min-h-screen text-text">
 
-     {/* <RoleBasedNavigation/> */}
-
-      {/* Navbar */}
-      {/* <AdminNavbar /> */}
-  
-      {/* Main Content */}
+       {/* Main Content */}
       <div className=" py-3 mx-auto bg-white shadow-md rounded-lg">
         {/* Header Section */}
         <div className="w-full flex gap-10 shadow-md items-center underline decoration-heading p-4 mb-6">

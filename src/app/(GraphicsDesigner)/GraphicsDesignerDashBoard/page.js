@@ -6,6 +6,7 @@ import { AuthContext } from "@/Context/contrext";
 import axios from "axios";
 import AppRouts from "@/Constant/Constant";
 import UpdateProject from "@/app/Components/UpdateProject"; // Ensure this is imported
+import RoleBasedNavigation from "@/app/Components/RoleBaseNavigation";
 
 const GraphicsDesignerDashBoard = () => {
   const { user } = useContext(AuthContext);
@@ -29,6 +30,8 @@ const GraphicsDesignerDashBoard = () => {
 
   return (
     <div className="min-h-screen text-text">
+      {/* <RoleBasedNavigation/> */}
+
       <EmployeeNavbar />
 
       <div className="mb-10 w-full flex gap-10 shadow-md items-center underline decoration-heading p-4 ">
