@@ -13,9 +13,18 @@ function AuthContextProvider({ children }) {
  
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(Cookies.get("token") || null); 
-  const [session, setSession] = useState(
-    sessionStorage.getItem("tokenForSessionStorage") || null
-  ); // Initialize session storage token
+ 
+  // const [session, setSession] = useState(
+  //   sessionStorage.getItem("tokenForSessionStorage") || null
+  // ); // Initialize session storage token
+  
+    useEffect(() => {
+      if (typeof window !== "undefined") {
+        const storedSession = sessionStorage.getItem("tokenForSessionStorage") || null;
+        setSession(storedSession);
+      }
+    }, []);
+  
   const [loading, setLoading] = useState(true); 
 
 
