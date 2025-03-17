@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import LogoutButton from "@/app/Components/Logout";
-import AdminNavbar from "../AdminComponent/AdminNavbar";
 // import AdminHerosection from "../AdminComponent/Projects";
 import Projects from "../AdminComponent/Projects";
 import AddNewProject from "@/app/Components/AddNewProject";
@@ -12,7 +10,7 @@ import { AuthContext } from "@/Context/contrext";
 export default function AdminDashboard() {
 
  // Access user and token from AuthContext
- const { user, setUser, setToken, setSession } = useContext(AuthContext);
+ const { user } = useContext(AuthContext);
  console.log("User:" , user);
 
   // Dummy data for demonstration

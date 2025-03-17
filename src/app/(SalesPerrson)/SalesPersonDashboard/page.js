@@ -3,15 +3,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AppRouts from "@/Constant/Constant";
-import EditButton from "@/app/Components/EditProject";
-import DeleteButton from "@/app/Components/DeleteProject";
-import ProjectDetails from "@/app/Components/projectDetails";
 import ProjectChart from "@/app/Components/ProjectGraph";
-import SalesNavbar from "../SalesPersonComponent/SalesNavbar";
 import AddNewProject from "@/app/Components/AddNewProject";
 import UpdateProject from "@/app/Components/UpdateProject";
-import Navbar from "@/app/Components/DashboardNavebar";
-// import EmployeeDashBoard from "@/app/(EmployePannel)/EmployeeDashboard/page";
 import EmployeeNavbar from "@/app/Components/EmployeNavebar";
 
 const SalesPerson = () => {
