@@ -3,6 +3,7 @@
 import { useState } from "react";
 import axios from "axios";
 import AppRouts from "@/Constant/Constant";
+import { Trash } from "lucide-react"
 
 const DeleteButton = ({ id, Title }) => {
   const [loading, setLoading] = useState(false);
@@ -36,10 +37,10 @@ const DeleteButton = ({ id, Title }) => {
       <button
         onClick={handleDelete}
         type="button"
-        className="bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-700 transition disabled:bg-gray-400"
+        className=" text-red-500 px-2 py-1 rounded-md hover:bg-red-600 hover:text-white transition disabled:bg-gray-400"
         disabled={loading}
-      >
-        {loading ? "Deleting..." : "Delete"}
+      ><Trash size={18}/>
+        {/* {loading ? "Deleting..." : "Delete"} */}
       </button>
     </div>
   );

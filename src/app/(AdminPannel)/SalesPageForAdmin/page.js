@@ -45,6 +45,7 @@ const SalesPageForAdmin = () => {
         data.salesPerson?.toLowerCase().includes(searchLower) ||
         data.projectID?.toLowerCase().includes(searchLower) ||
         data.assignto?.toLowerCase().includes(searchLower) ||
+        data.projectCost?.includes(searchTerm) ||
         proposedDate.includes(searchLower) ||
         actualDate.includes(searchLower)
       );
@@ -65,27 +66,56 @@ const SalesPageForAdmin = () => {
 
   return (
     <div className="min-h-screen text-text">
-      <div className="flex flex-col items-center w-full gap-2 md:flex-row md:justify-between">
-        <div className="w-full md:w-1/2 flex flex-col items-end">
-          <div className="w-full sm:w-3/4 flex flex-col sm:flex-row items-center gap-4 p-2">
+      <div className="w-full flex flex-col sm:flex-row justify-between shadow-md items-center underline decoration-heading p-4 mb-6 gap-4">
+        {/* Title */}
+        <h2 className="w-full sm:w-1/2 text-center sm:text-left text-md md:text-4xl font-serif text-heading">
+          Sales Record
+        </h2>
+
+        {/* Search Container */}
+        <div className="w-full sm:w-1/2 md:w-1/3 flex flex-col md:flex-row  items-center gap-4">
+          {/* Search result display */}
+          {searchTerm && (
+            <span className="text-sm md:text-lg font-serif text-gray-600">
+              {filteredProjects.length} result(s) found
+            </span>
+          )}
+
+          <input
+            className="w-full flex-grow text-center py-2 px-4 text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
+            type="search"
+            placeholder="Search here..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center w-full md:flex-row md:justify-between">
+        <div className="w-full flex flex-col md:flex-row justify-between items-end">
+          <div className="w-full md:w-1/2 flex ">
+            <ProjectChart />
+          </div>
+
+          {/* <div className="w-full md:w-1/3 flex flex-col lg:flex-row items-center gap-4 p-2">
+            <div>
+              <span className="text-sm md:text-lg font-serif">
+                {!searchTerm ? (
+                  <span className=" hidden"></span>
+                ) : (
+                  `${filteredProjects.length} result(s) found`
+                )}
+              </span>
+            </div>
+
             <input
-              className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
+              className="w-full text-center py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
               type="search"
               placeholder="Search here..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <div className="w-full sm:w-3/4 text-white text-sm bg-heading text-center shadow-md rounded-lg py-2 px-3">
-              <span className="text-sm md:text-lg font-serif">
-                {!searchTerm
-                  ? "Search Here"
-                  : `${filteredProjects.length} result(s) found`}
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="w-full md:w-1/2 flex justify-center items-end">
-          <ProjectChart />
+          </div> */}
         </div>
       </div>
 
@@ -106,7 +136,8 @@ const SalesPageForAdmin = () => {
                 Developer / <br /> Designer
               </th>
               <th className="p-3 text-md">
-                Onboarding & <br />Completion Date
+                Onboarding & <br />
+                Completion Date
               </th>
               <th className="p-3 text-md">Status</th>
               <th className="p-3 text-md text-center">Actions</th>
@@ -136,8 +167,8 @@ const SalesPageForAdmin = () => {
 
                   {project.paymentDetails?.map((detail, index) => (
                     <div key={index}>
-                      {detail.amount} as {detail.purpose} on {detail.date?.split("T")[0]}
-                     
+                      {detail.amount} as {detail.purpose} on{" "}
+                      {detail.date?.split("T")[0]}
                     </div>
                   ))}
 

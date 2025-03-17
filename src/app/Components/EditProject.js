@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 // import AppRouter from "@/Constant/Constant";
 import AppRouts from "@/Constant/Constant";
+import { Pencil, } from "lucide-react";
 import axios from "axios";
 
 const EditButton = ({ id }) => {
@@ -78,9 +79,9 @@ const EditButton = ({ id }) => {
       {/* Edit Button */}
       <button
         onClick={handleClick} // Fixed: Call handleClick directly
-        className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
+        className=" text-blue-500 px-3 py-1 rounded-md hover:bg-blue-600 hover:text-white transition"
       >
-        Edit
+        <Pencil size={18}/>
       </button>
 
       {/* Modal */}
@@ -344,7 +345,7 @@ const EditButton = ({ id }) => {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="w-fit bg-blue-500 text-white text-md font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
+                  className="w-fit bg-blue-500 text-white text-xl font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
                   disabled={loading}
                 >
                   {loading ? "Submitting..." : "Submit"}

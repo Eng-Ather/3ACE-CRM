@@ -73,36 +73,32 @@ const EmployeesRecord = () => {
 
   return (
     <div className="min-h-screen text-text">
-      <div className="w-full flex justify-between shadow-md items-center underline decoration-heading p-4 mb-6">
-        <h2 className="text-md md:text-4xl font-serif text-heading">
-          Employees Record
+ 
+      <div className="w-full flex flex-col sm:flex-row justify-between shadow-md items-center underline decoration-heading p-4 mb-6 gap-4">
+        {/* Title */}
+        <h2 className="w-full sm:w-1/2 text-center sm:text-left text-md md:text-4xl font-serif text-heading">
+          Employee Record
         </h2>
 
-        {/* search filter */}
-        <div className="w-full sm:w-1/2 flex flex-col sm:flex-row items-center gap-4 p-2">
+        {/* Search Container */}
+        <div className="w-full sm:w-1/2 md:w-1/3 flex flex-col md:flex-row items-center gap-4">
+         
+          {/* Search result display */}
+          {searchTerm && (
+            <span className="text-sm md:text-lg font-serif text-gray-600">
+              {filteredEmployee.length} result(s) found
+            </span>
+          )}
+         
           <input
-              className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
-              type="search"
+            className="w-full flex-grow text-center py-2 px-4 text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
+            type="search"
             placeholder="Search here..."
             value={searchTerm}
             onChange={handleSearch}
           />
 
-          {/* <input
-            className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:ring focus:ring-blue-900 shadow-sm"
-            type="search"
-            placeholder="Search here..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          /> */}
-
-          <div className="w-full sm:w-3/4 text-white text-sm bg-heading text-center text-heading shadow-md rounded-lg py-2 px-3">
-            <span className="text-sm md:text-lg font-serif">
-              {!searchTerm
-                ? "Search Here"
-                : `${filteredEmployee.length} result(s) found`}
-            </span>
-          </div>
+         
         </div>
       </div>
 
@@ -134,7 +130,8 @@ const EmployeesRecord = () => {
                   <td className="p-3">
                     {data.name}
                     <br />
-                    {data.cnic}{" "}
+                    {/* {data.cnic}{" "} */}
+                    {data.cnin}{" "}
                   </td>
                   <td className="p-3">{data.position}</td>
                   <td className="p-3">{data.role}</td>

@@ -175,7 +175,7 @@ const Projects = () => {
                     <EditButton id={project._id} />
                     <DeleteButton id={project._id} />
                     <ProjectDetails Pid={project._id} />
-                    <UpdateProject Pid={project._id} projectTitle={project.projectTitle} />
+                    <UpdateProject Pid={project._id} />
 
                   </td>
                 </tr>

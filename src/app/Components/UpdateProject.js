@@ -3,10 +3,11 @@ import { useContext } from "react";
 import { AuthContext } from "@/Context/contrext";
 import AppRouts from "@/Constant/Constant";
 import axios from "axios";
+import { X, Settings, } from "lucide-react";
 
 const UpdateProject = ({ Pid, projectTitle }) => {
   const { user } = useContext(AuthContext);
-//   console.log(user);
+  //   console.log(user);
 
   const [updateProject, setUpdateProject] = useState(false);
   const [file, setFile] = useState(null);
@@ -37,8 +38,7 @@ const UpdateProject = ({ Pid, projectTitle }) => {
       console.log("response", response);
       alert("Project Updated Successfully");
       setUpdateProject(false);
-    }
-     catch (error) {
+    } catch (error) {
       console.log(error);
       alert("ERROR ", error);
     }
@@ -49,9 +49,9 @@ const UpdateProject = ({ Pid, projectTitle }) => {
     <div>
       <button
         onClick={handleClick}
-        className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
+        className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition flex items-center gap-2"
       >
-        Update
+        <Settings size={18} /> Modify
       </button>
 
       {updateProject && (
@@ -69,7 +69,7 @@ const UpdateProject = ({ Pid, projectTitle }) => {
                 onClick={() => setUpdateProject(false)}
                 className="text-4xl text-gray-600 hover:text-black transition duration-300"
               >
-                ×
+                <X size={18} />
               </button>
             </div>
 
@@ -87,7 +87,7 @@ const UpdateProject = ({ Pid, projectTitle }) => {
                   <textarea
                     name="remarks"
                     id="remarks"
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
+                    className="w-full text-xl px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter remarks"
                     rows="5"
                   ></textarea>
@@ -96,7 +96,10 @@ const UpdateProject = ({ Pid, projectTitle }) => {
 
               {/* File Upload */}
               <div className="w-full">
-                <label htmlFor="file" className="block text-text text-lg font-semibold font-serif">
+                <label
+                  htmlFor="file"
+                  className="block text-text text-lg font-semibold font-serif"
+                >
                   Attach Document (PDF, DOC, IMG)
                 </label>
                 <input
@@ -104,10 +107,14 @@ const UpdateProject = ({ Pid, projectTitle }) => {
                   id="file"
                   name="file"
                   accept=".pdf,.doc,.docx,.jpg,.png"
-                //   onChange={handleFileChange}
+                  //   onChange={handleFileChange}
                   className="w-full px-4 py-2 border rounded-lg cursor-pointer"
                 />
-                {file && <p className="text-sm text-gray-600 mt-2">Selected File: {file.name}</p>}
+                {file && (
+                  <p className="text-sm text-gray-600 mt-2">
+                    Selected File: {file.name}
+                  </p>
+                )}
               </div>
 
               {/* Submit Button */}
@@ -116,7 +123,7 @@ const UpdateProject = ({ Pid, projectTitle }) => {
                   type="submit"
                   className="w-fit bg-blue-500 text-white text-xl font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
                 >
-                  update
+                  Submit
                 </button>
               </div>
             </form>

@@ -42,7 +42,8 @@ export default function ProjectChart() {
   const percentagePending = totalProject > 0 ? (pendingProject / totalProject) * 100 : 0;
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
+      
       {/* <h2 className="text-heading text-xl md:text-4xl text-center font-serif pt-10 mb-12">
         Project Status
       </h2> */}
@@ -54,7 +55,7 @@ export default function ProjectChart() {
       ) : (
         <div className="flex flex-wrap justify-center gap-14">
           {/* Total Projects */}
-          <div className="flex flex-col items-center w-20 md:w-28">
+          <div className="flex flex-col items-center w-20 lg:w-28">
             <p className="font-semibold text-sm text-gray-700 mb-2">Total</p>
             <div className="w-18 md:w-20">
               <CircularProgressbar
@@ -71,7 +72,7 @@ export default function ProjectChart() {
           </div>
 
           {/* Complete Projects */}
-          <div className="flex flex-col items-center w-20 md:w-28">
+          <div className="flex flex-col items-center w-20 lg:w-28">
             <p className="font-semibold text-sm text-green-600 mb-2">Completed</p>
             <div className="w-18 md:w-20">
               <CircularProgressbar
@@ -89,7 +90,7 @@ export default function ProjectChart() {
           </div>
 
           {/* Pending Projects */}
-          <div className="flex flex-col items-center w-20 md:w-28">
+          <div className="flex flex-col items-center w-20 lg:w-28">
             <p className="font-semibold text-sm text-red-600 mb-2">Pending</p>
             <div className="w-18 md:w-20">
               <CircularProgressbar
