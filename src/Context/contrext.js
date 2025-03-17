@@ -13,6 +13,8 @@ function AuthContextProvider({ children }) {
  
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(Cookies.get("token") || null); 
+  const [session, setSession] = useState(null); // ✅ Fix: session ko initialize kiya
+  const [loading, setLoading] = useState(true); 
  
   // const [session, setSession] = useState(
   //   sessionStorage.getItem("tokenForSessionStorage") || null
@@ -25,7 +27,6 @@ function AuthContextProvider({ children }) {
       }
     }, []);
   
-  const [loading, setLoading] = useState(true); 
 
 
   useEffect(() => {
