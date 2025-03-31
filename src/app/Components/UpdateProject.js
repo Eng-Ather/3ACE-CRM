@@ -3,48 +3,84 @@ import { useContext } from "react";
 import { AuthContext } from "@/Context/contrext";
 import AppRouts from "@/Constant/Constant";
 import axios from "axios";
-import { X, Settings, } from "lucide-react";
+import { X, Settings } from "lucide-react";
 
 const UpdateProject = ({ Pid, projectTitle }) => {
-  const { user } = useContext(AuthContext);
-  //   console.log(user);
-
+  const { user, token } = useContext(AuthContext);
   const [updateProject, setUpdateProject] = useState(false);
   const [file, setFile] = useState(null);
+  const [fileType, setFileType] = useState(""); // To track file type
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+
+    // Determine file type
+    const fileExtension = selectedFile.name.split(".").pop().toLowerCase();
+    let isImage = ["jpg", "jpeg", "png", "gif"].includes(fileExtension);
+    setFileType(isImage ? "image" : "raw");
+  };
 
   const handleClick = async () => {
-    console.log("Project ID:", Pid);
-    console.log("Project Title:", projectTitle);
     setUpdateProject(true);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(e.target.remarks.value);
 
-    const updatedData = {
-      userID: user.userId,
-      userName: user.name,
-      userRole: user.role,
-      projecTitle: projectTitle,
-      projectID: Pid,
-      remarks: e.target.remarks.value,
-    };
+    if (!file) {
+      alert("Please select a file before submitting!");
+      return;
+    }
 
-    // console.log(updatedData);
+    // Validate file size (10MB max example)
+    if (file.size > 10 * 1024 * 1024) {
+      alert("File size exceeds 10MB limit");
+      return;
+    }
+
+    const fileData = new FormData();
+    fileData.append("file", file);
+    fileData.append("upload_preset", "CRM_preset");
+    // Determine correct resource type
+    const isDocument =
+      file.type === "application/pdf" ||
+      file.type === "application/msword" ||
+      file.type ===
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+
+    fileData.append("resource_type", isDocument ? "raw" : "image");
 
     try {
+      const endpoint = `https://api.cloudinary.com/v1_1/dnqh1oaye/auto/upload`;
+      const uploadResponse = await axios.post(endpoint, fileData);
+      const f_url = uploadResponse.data.secure_url;
+
+      const updatedData = {
+        userID: user.userId,
+        userName: user.name,
+        userRole: user.role,
+        projecTitle: projectTitle,
+        projectID: Pid,
+        remarks: e.target.remarks.value,
+        document: f_url,
+        documentType: fileType, // Store file type for reference
+      };
+
+      console.log(updatedData);
+
       const response = await axios.post(AppRouts.updateProject, updatedData);
-      console.log("response", response);
       alert("Project Updated Successfully");
       setUpdateProject(false);
     } catch (error) {
-      console.log(error);
-      alert("ERROR ", error);
+      console.error("Error:", error);
+      alert(
+        `Upload failed: ${
+          error.response?.data?.error?.message || error.message
+        }`
+      );
     }
-    // Logic to update project data
   };
-
   return (
     <div>
       <button
@@ -107,7 +143,7 @@ const UpdateProject = ({ Pid, projectTitle }) => {
                   id="file"
                   name="file"
                   accept=".pdf,.doc,.docx,.jpg,.png"
-                  //   onChange={handleFileChange}
+                  onChange={handleFileChange}
                   className="w-full px-4 py-2 border rounded-lg cursor-pointer"
                 />
                 {file && (
@@ -133,6 +169,4 @@ const UpdateProject = ({ Pid, projectTitle }) => {
     </div>
   );
 };
-
-// export default UpdateProject;
 export default UpdateProject;

@@ -13,7 +13,7 @@ function AuthContextProvider({ children }) {
  
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(Cookies.get("token") || null); 
-  const [session, setSession] = useState(null); // ✅ Fix: session ko initialize kiya
+  const [session, setSession] = useState(null); 
   const [loading, setLoading] = useState(true); 
  
   // const [session, setSession] = useState(
@@ -34,9 +34,9 @@ function AuthContextProvider({ children }) {
       if (session) {
         await getUserInfo(session);
       } else if (!session && token) {
-        sessionStorage.setItem("tokenForSessionStorage", token); // Update session storage
-        setSession(token); // Update session state
-        await getUserInfo(token); // Use token directly
+        sessionStorage.setItem("tokenForSessionStorage", token); 
+        setSession(token); 
+        await getUserInfo(token); 
       }
        else if (session && !token) {
         await getUserInfo(session);

@@ -195,11 +195,11 @@ const SalesPageForAdmin = () => {
                   <td className="p-3 flex gap-2">
                     <EditButton id={project._id} />
                     <DeleteButton id={project._id} />
-                    <ProjectDetails Pid={project._id} />
+                    {/* <ProjectDetails Pid={project._id} />
                     <UpdateProject
                       Pid={project._id}
                       projectTitle={project.projectTitle}
-                    />
+                    /> */}
                   </td>
                 </tr>
               ))
