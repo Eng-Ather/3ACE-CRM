@@ -6,8 +6,6 @@ import AppRouts from "@/Constant/Constant";
 import ProjectChart from "@/app/Components/ProjectGraph";
 import EditButton from "@/app/Components/EditProject";
 import DeleteButton from "@/app/Components/DeleteProject";
-import UpdateProject from "@/app/Components/UpdateProject";
-import ProjectDetails from "@/app/Components/projectDetails";
 
 const SalesPageForAdmin = () => {
   const [projectsSales, setProjectsSales] = useState([]);
@@ -91,58 +89,34 @@ const SalesPageForAdmin = () => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center w-full md:flex-row md:justify-between">
+{/* chart (or) graph */}
+      {/* <div className="flex flex-col items-center w-full md:flex-row md:justify-between">
         <div className="w-full flex flex-col md:flex-row justify-between items-end">
           <div className="w-full md:w-1/2 flex ">
             <ProjectChart />
           </div>
 
-          {/* <div className="w-full md:w-1/3 flex flex-col lg:flex-row items-center gap-4 p-2">
-            <div>
-              <span className="text-sm md:text-lg font-serif">
-                {!searchTerm ? (
-                  <span className=" hidden"></span>
-                ) : (
-                  `${filteredProjects.length} result(s) found`
-                )}
-              </span>
-            </div>
-
-            <input
-              className="w-full text-center py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
-              type="search"
-              placeholder="Search here..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div> */}
         </div>
-      </div>
+      </div> */}
 
       <div className="bg-white py-6 rounded-lg overflow-x-auto">
         <table className="w-full border-collapse">
+          
+          {/* headings */}
           <thead>
             <tr className="bg-gray-200 font-serif text-left">
               <th className="p-3 text-md">Sr</th>
               <th className="p-3 text-md">Client & Project Title</th>
               <th className="p-3 text-md">Contacts</th>
-              <th className="p-3 text-md">
-                Project Cost & <br /> Sales Person
-              </th>
-
+              <th className="p-3 text-md">Project Cost & <br /> Sales Person</th>
               <th className="p-3 text-md">Payment Details </th>
-
-              <th className="p-3 text-md">
-                Developer / <br /> Designer
-              </th>
-              <th className="p-3 text-md">
-                Onboarding & <br />
-                Completion Date
-              </th>
+              <th className="p-3 text-md">Deliverd Date</th>
               <th className="p-3 text-md">Status</th>
               <th className="p-3 text-md text-center">Actions</th>
             </tr>
           </thead>
+
+          {/* values */}
           <tbody>
             {filteredProjects.length > 0 ? (
               filteredProjects.map((project, index) => (
@@ -162,24 +136,23 @@ const SalesPageForAdmin = () => {
                     {project.email}
                   </td>
                   <td className="p-3">
-                    {project.projectCost} <br /> {project.salesPerson}
+                    {project.projectCost} <br /> {project.salesPerson || "N/A"} <br/> {project.salesPersonID }
                   </td>
 
+                  <td>
                   {project.paymentDetails?.map((detail, index) => (
                     <div key={index}>
                       {detail.amount} as {detail.purpose} on{" "}
                       {detail.date?.split("T")[0]}
                     </div>
-                  ))}
+                  ))
+                  ||"N/A"
+                  }
+                  </td>
 
                   <td className="p-3">
-                    {project.assignto}
-                    <br />
-                    {project.assignedDate?.split("T")[0]}
-                  </td>
-                  <td className="p-3">
-                    {project.onboarding?.split("T")[0]} <br />{" "}
-                    {project.actualCompletionDate?.split("T")[0]}
+                    {/* {project.onboarding?.split("T")[0]} <br />{" "} */}
+                    {project.projectDeliveryDate? project.projectDeliveryDate.split("T")[0] : "N/A"}
                   </td>
                   <td
                     className={`p-3 font-semibold ${
@@ -195,11 +168,7 @@ const SalesPageForAdmin = () => {
                   <td className="p-3 flex gap-2">
                     <EditButton id={project._id} />
                     <DeleteButton id={project._id} />
-                    {/* <ProjectDetails Pid={project._id} />
-                    <UpdateProject
-                      Pid={project._id}
-                      projectTitle={project.projectTitle}
-                    /> */}
+                   
                   </td>
                 </tr>
               ))

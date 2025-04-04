@@ -14,9 +14,9 @@ export default function AdminDashboard() {
  console.log("User:" , user);
 
   // Dummy data for demonstration
-  const totalEmployees = 50;
-  const pendingProjects = 12;
-  const totalSales = 120000;
+  // const totalEmployees = 50;
+  // const pendingProjects = 12;
+  // const totalSales = 120000;
 
   return (
     <div className="min-h-screen text-text">

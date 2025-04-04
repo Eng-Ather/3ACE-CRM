@@ -14,7 +14,7 @@ const EditButton = ({ id }) => {
   //  to get project details
   const fatchData = async () => {
     try {
-      const projectdetails = await axios.get(`${AppRouts.deleteProject}/${id}`);
+      const projectdetails = await axios.get(`${AppRouts.editProject}/${id}`);
       console.log("project details: ", projectdetails.data.data);
       setProjectCurrentDetails(projectdetails.data.data);
     } catch (error) {

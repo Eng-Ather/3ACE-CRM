@@ -6,7 +6,7 @@ import DeleteButton from "@/app/Components/DeleteProject";
 import ProjectDetails from "@/app/Components/projectDetails";
 import UpdateProject from "@/app/Components/UpdateProject";
 import ProjectChart from "@/app/Components/ProjectGraph";
-
+import ImportToSales from "@/app/Components/ImportToSales";
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -172,6 +172,7 @@ const Projects = () => {
                   >
                     {project.status}
                   </td>    <td className="p-3 flex gap-2">
+                  <ImportToSales id={project._id}/>
                     <EditButton id={project._id} />
                     <DeleteButton id={project._id} />
                     <ProjectDetails Pid={project._id} />
