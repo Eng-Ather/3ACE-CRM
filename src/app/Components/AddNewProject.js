@@ -17,7 +17,6 @@ const AddNewProject = () => {
         const response = await axios.get(AppRouts.getAllProject);
         setAllProject(response.data.data || []);
         // console.log(response.data.data);
-        
         setLoading(false);
       } catch (error) {
         alert(error.message);
@@ -62,6 +61,7 @@ const AddNewProject = () => {
       const response = await axios.post(AppRouts.addNewProject, newProjectData);
       alert("save data sucessfully");
       setNewProjectForm(false);
+      window.location.reload();
       // window.location.reload();
     } catch (error) {
       alert("ERROR: " + error);

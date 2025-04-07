@@ -31,6 +31,7 @@ const EditButton = ({ id }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // data to make change in project details  
     const updateData = {
       projectTitle: e.target.projectTitle.value,
       projectType: e.target.projectType.value,
@@ -39,6 +40,7 @@ const EditButton = ({ id }) => {
       email: e.target.email.value,
       onboarding: e.target.onboarding.value,
       salesPerson: e.target.salesPerson.value,
+      salesPersonID: e.target.salesPersonID.value,
       status: e.target.status.value,
       link: e.target.link.value,
       proposedCompletionDate: e.target.proposedCompletionDate.value,
@@ -46,6 +48,21 @@ const EditButton = ({ id }) => {
       region: e.target.region.value,
       assignto: e.target.assignto.value,
     };
+
+      // data to make change in sales Record
+      const updatSalesdData = {
+
+        projectTitle: e.target.projectTitle.value,
+        projectType: e.target.projectType.value,
+        client: e.target.client.value,
+        contactNo: e.target.contactNo.value,
+        email: e.target.email.value,
+        salesPerson: e.target.salesPerson.value,
+        salesPersonID: e.target.salesPersonID.value,
+        status: e.target.status.value,
+
+      } 
+
 
     console.log("New Project Data:", updateData);
 
@@ -61,6 +78,10 @@ const EditButton = ({ id }) => {
       if (response.status === 200) {
         alert("Project updated successfully!");
         setEditProjectDetails(false); // Modal close if successful
+
+        const res = await axios.post(AppRouts.updateSalesRecord,{projectID:id, updatSalesdData})
+        // console.log("res22", res);        
+
         window.location.reload();
       } else {
         alert("Failed to update project.");
@@ -107,7 +128,7 @@ const EditButton = ({ id }) => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="projectTitle"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-md font-semibold font-serif"                    
                   >
                     Project Title
                   </label>
@@ -209,7 +230,7 @@ const EditButton = ({ id }) => {
                 </div>
               </div>
 
-              {/* Row 4: Sales Person and Status */}
+              {/* Row 4: Sales Person and salesPersonID */}
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="w-full md:w-1/2">
                   <label
@@ -226,22 +247,24 @@ const EditButton = ({ id }) => {
                     defaultValue={projectCurrentDetails?.salesPerson}
                   />
                 </div>
+
+
                 <div className="w-full md:w-1/2">
                   <label
-                    htmlFor="status"
+                    htmlFor="salesPersonID"
                     className="block text-text text-md font-semibold font-serif"
                   >
-                    Status
+                    Sales salesPersonID
                   </label>
-                  <select
-                    name="status"
+                  <input
+                    type="text"
+                    name="salesPersonID"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
-                    defaultValue={projectCurrentDetails?.status}
-                  >
-                    <option value="Completed">Completed</option>
-                    <option value="Pending">Pending</option>
-                  </select>
+                    placeholder="Enter sales person name"
+                    defaultValue={projectCurrentDetails?.salesPersonID}
+                  />
                 </div>
+
               </div>
 
               {/* Row 5: Link and Proposed Completion Date */}
@@ -338,6 +361,23 @@ const EditButton = ({ id }) => {
                     placeholder="Enter assignto name"
                     defaultValue={projectCurrentDetails?.assignto}
                   />
+                </div>
+
+                <div className="w-full md:w-1/2">
+                  <label
+                    htmlFor="status"
+                    className="block text-text text-md font-semibold font-serif"
+                  >
+                    Status
+                  </label>
+                  <select
+                    name="status"
+                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
+                    defaultValue={projectCurrentDetails?.status}
+                  >
+                    <option value="Completed">Completed</option>
+                    <option value="Pending">Pending</option>
+                  </select>
                 </div>
               </div>
 

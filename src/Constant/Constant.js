@@ -25,6 +25,7 @@ const AppRouts = {
   getProjectsSalesRecord: Base_URL + "/projectSalesRecord/getSalesRecord",
   createProjectSalesReacord: Base_URL + "/projectSalesRecord/salesRecord",
   indivusalSalesRecord: Base_URL + "/projectSalesRecord/getIndivusalSalesRecord",
-  deleteSalesReacord: Base_URL + "/projectSalesRecord/deleteSalesRecord"
+  deleteSalesReacord: Base_URL + "/projectSalesRecord/deleteSalesRecord",
+  updateSalesRecord: Base_URL + "/projectSalesRecord/editSalesRecord"
 };
 export default AppRouts;
