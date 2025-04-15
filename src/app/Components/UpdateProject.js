@@ -70,7 +70,7 @@ const UpdateProject = ({ Pid, projectTitle }) => {
       console.log(updatedData);
 
       const response = await axios.post(AppRouts.updateProject, updatedData);
-      alert("Project Updated Successfully");
+      alert(" Updated Successfully");
       setUpdateProject(false);
     } catch (error) {
       console.error("Error:", error);

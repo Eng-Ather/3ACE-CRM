@@ -37,7 +37,7 @@ const AddNewProject = () => {
     const newProjectData = {
       projectTitle: e.target.projectTitle.value,
       projectType: e.target.projectType.value,
-      projectID: `PI-3ACE-TECH-0${e.target.projectId.value}0`,
+      // projectID: `PI-3ACE-TECH-0${e.target.projectId.value}0`,
       client: e.target.client.value,
       contactNo: e.target.contactNo.value,
       email: e.target.email.value,
@@ -53,15 +53,15 @@ const AddNewProject = () => {
 
     };
 
-    console.log("New Project Data:", newProjectData);
-    // alert("Project Submitted!");
-    // setNewProjectForm(false);
+    // console.log("New Project Data:", newProjectData);
     setLoading(true);
     try {
       const response = await axios.post(AppRouts.addNewProject, newProjectData);
       alert("save data sucessfully");
       setNewProjectForm(false);
       window.location.reload();
+      e.target.reset();     // Reset the form
+
       // window.location.reload();
     } catch (error) {
       alert("ERROR: " + error);
@@ -230,8 +230,8 @@ const AddNewProject = () => {
                     required
                   >
                     {/* <option value="In Progress">In Progress</option> */}
-                    <option value="Completed">Completed</option>
                     <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
                   </select>
                 </div>
               </div>
@@ -334,7 +334,7 @@ const AddNewProject = () => {
               </div>
 
                {/* Row 8:  */}
-               <div className="flex flex-col md:flex-row gap-4">
+               {/* <div className="flex flex-col md:flex-row gap-4">
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="projectId"
@@ -347,10 +347,10 @@ const AddNewProject = () => {
                     name="projectId"
                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
                     placeholder="Enter projectId"
-                    required
+                    // required
                   />
                 </div>
-                </div>
+                </div> */}
 
               {/* Submit Button */}
               <div className="flex justify-end">

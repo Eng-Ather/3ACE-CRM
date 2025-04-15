@@ -79,7 +79,7 @@ const Projects = () => {
         <div className="w-full md:w-1/2 flex flex-col items-end justify-end">
           <div className="w-full sm:w-3/4 flex flex-col sm:flex-row items-center gap-4 p-2">
             <input
-              className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
+              className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-blue-900 shadow-sm"
               type="search"
               placeholder="Search here..."
               value={searchTerm}
@@ -139,27 +139,35 @@ const Projects = () => {
                     </a>
                   </td>
 
-                  <td className="p-3">{project.assignto}<br/>
-                  {new Date(project.assignedDate).toISOString().split("T")[0]}</td>
+                  <td className="p-3 ">{project.assignto}<br/>
+                  {   project.assignto == "Not Assigned" ?"-x-x-x-" : new Date(project.assignedDate).toISOString().split("T")[0]}
+                  </td>
 
                   <td className="p-3">
                     {new Date(project.onboarding).toISOString().split("T")[0]}
                   </td>
 
                   <td className="p-3">
-                    {
+                    { project.proposedCompletionDate?
                       new Date(project.proposedCompletionDate)
                         .toISOString()
-                        .split("T")[0]
+                        .split("T")[0] : "Not Decided"
                     }
                   </td>
                   <td className="p-3">
-                    {
+                    { project.actualCompletionDate ? 
                       new Date(project.actualCompletionDate)
+                        .toISOString()
+                        .split("T")[0] :"Not Delivered"
+                    }
+                  </td>
+
+                  {/* <td className="p-3">
+                    { new Date(project.actualCompletionDate)
                         .toISOString()
                         .split("T")[0]
                     }
-                  </td>
+                  </td> */}
 
                   <td
                     className={`p-3 font-semibold ${
@@ -171,7 +179,8 @@ const Projects = () => {
                     }`}
                   >
                     {project.status}
-                  </td>    <td className="p-3 flex gap-2">
+                  </td>   
+                   <td className="p-3 flex gap-2 items-center ">
                   <ImportToSales id={project._id}/>
                     <EditButton id={project._id} />
                     <DeleteButton id={project._id} />

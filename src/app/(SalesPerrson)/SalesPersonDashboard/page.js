@@ -86,11 +86,11 @@ const SalesPerson = () => {
   };
 
   // Calculate stats
-  const totalProjects = projects.length;
-  const pendingProjects = projects.filter((p) => p.status === "Pending").length;
-  const completedProjects = projects.filter(
-    (p) => p.status === "Completed"
-  ).length;
+  // const totalProjects = projects.length;
+  // const pendingProjects = projects.filter((p) => p.status === "Pending").length;
+  // const completedProjects = projects.filter(
+  //   (p) => p.status === "Completed"
+  // ).length;
 
   if (loading) {
     return (
@@ -114,11 +114,12 @@ const SalesPerson = () => {
       </div>
 
       <div className="flex flex-col items-center w-full gap-2 md:flex-row md:justify-between">
+      
         {/* Search Bar Section */}
         <div className=" w-full md:w-1/2 flex flex-col items-end justify-end ">
           <div className="w-full sm:w-3/4 flex flex-col sm:flex-row items-center gap-4 p-2">
             <input
-              className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-none focus:ring focus:ring-blue-900 shadow-sm"
+              className="w-full py-2 px-4 text-sm md:text-base rounded-lg border border-heading focus:outline-blue-900 "
               type="search"
               placeholder="Search here..."
               value={searchTerm}
@@ -162,9 +163,9 @@ const SalesPerson = () => {
               <th className="p-3 text-md">
                 Refrence <br /> Link
               </th>
-              <th className="p-3 text-md">
+              {/* <th className="p-3 text-md">
                 Developer / <br /> Designer
-              </th>
+              </th> */}
 
               <th className="p-3 text-md">
                 Onboarding <br /> Date
@@ -210,8 +211,8 @@ const SalesPerson = () => {
                     </a>
                   </td>
 
-                  <td className="p-3">{project.assignto}<br/>
-                  {new Date(project.assignedDate).toISOString().split("T")[0]}</td>
+                  {/* <td className="p-3">{project.assignto}<br/>
+                  {new Date(project.assignedDate).toISOString().split("T")[0]}</td> */}
 
                   <td className="p-3">
                     {new Date(project.onboarding).toISOString().split("T")[0]}

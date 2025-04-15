@@ -6,6 +6,8 @@ import AppRouts from "@/Constant/Constant";
 import ProjectChart from "@/app/Components/ProjectGraph";
 import EditButton from "@/app/Components/EditProject";
 import DeleteButton from "@/app/Components/DeleteProject";
+import AddNewProject from "@/app/Components/AddNewProject";
+import AddNewSale from "../AdminComponent/AddNewSale";
 
 const SalesPageForAdmin = () => {
   const [projectsSales, setProjectsSales] = useState([]);
@@ -89,8 +91,8 @@ const SalesPageForAdmin = () => {
         </div>
       </div>
 
-{/* chart (or) graph */}
-      {/* <div className="flex flex-col items-center w-full md:flex-row md:justify-between">
+{/* chart (or) graph  */}
+       {/* <div className="flex flex-col items-center w-full md:flex-row md:justify-between">
         <div className="w-full flex flex-col md:flex-row justify-between items-end">
           <div className="w-full md:w-1/2 flex ">
             <ProjectChart />
@@ -117,12 +119,12 @@ const SalesPageForAdmin = () => {
           </thead>
 
           {/* values */}
-          <tbody>
+          <tbody >
             {filteredProjects.length > 0 ? (
               filteredProjects.map((project, index) => (
                 <tr
                   key={project._id}
-                  className="hover:bg-gray-100 text-sm font-serif"
+                  className="hover:bg-gray-100 border border-b-gray-200 hover:border hover:border-black text-sm font-serif"
                 >
                   <td className="p-3">{index + 1}</td>
                   <td className="p-3">
@@ -142,12 +144,14 @@ const SalesPageForAdmin = () => {
                   <td>
                   {project.paymentDetails?.map((detail, index) => (
                     <div key={index}>
-                      {detail.amount} as {detail.purpose} on{" "}
-                      {detail.date?.split("T")[0]}
+                      {detail?.amount} as {detail?.purpose} on{" "}
+                      {detail?.date?.split("T")[0]}
                     </div>
                   ))
                   ||"N/A"
                   }
+                  <AddNewSale pid = {project.projectID} projectTitle={project.projectTitle}/>
+
                   </td>
 
                   <td className="p-3">
@@ -166,7 +170,7 @@ const SalesPageForAdmin = () => {
                     {project.status}
                   </td>
                   <td className="p-3 flex gap-2">
-                    <EditButton id={project._id} />
+                    {/* <EditButton id={project._id} /> */}
                     <DeleteButton id={project._id} />
                    
                   </td>
@@ -178,9 +182,11 @@ const SalesPageForAdmin = () => {
                   No projects found.
                 </td>
               </tr>
-            )}
+            )
+            }
           </tbody>
         </table>
+       
       </div>
     </div>
   );

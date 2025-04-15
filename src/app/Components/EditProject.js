@@ -78,6 +78,8 @@ const EditButton = ({ id }) => {
       if (response.status === 200) {
         alert("Project updated successfully!");
         setEditProjectDetails(false); // Modal close if successful
+        console.log("project ID : ", id);
+        
 
         const res = await axios.post(AppRouts.updateSalesRecord,{projectID:id, updatSalesdData})
         // console.log("res22", res);        

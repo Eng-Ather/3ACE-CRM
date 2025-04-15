@@ -140,6 +140,13 @@ const EmployeesRecord = () => {
                   <td className="p-3">{data.address}</td>
                   <td className="p-3">{data.userId}</td>
                   <td className="p-3">
+                  { data.joiningDate?new Date(data.joiningDate)
+                        .toISOString()
+                        .split("T")[0] : "Not provided"
+                    }
+                    
+                    </td>
+                  <td className="p-3">
                     {/* {
                       new Date(data.joiningDate)
                         .toISOString()
