@@ -6,10 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import LogoutButton from "@/app/Components/Logout";
 import LOGO from "@/images/LOGO.jpeg";
+import EditUsersProfile from "./EditProfile";
 
 export default function EmployeeNavbar() {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  console.log(user._id);
 
   const [isOpen, setIsOpen] = useState(false);
   const [profile, setProfile] = useState(false);
@@ -71,8 +72,8 @@ export default function EmployeeNavbar() {
           {profile && (
             <div className="absolute right-0 mt-3 w-48 bg-white text-black rounded-lg shadow-lg border border-gray-300">
               <ul>
-                <li className="px-4 py-2 hover:bg-gray-100 transition text-center">
-                  <Link href="/">Edit Profile</Link>
+                <li className="px-4 py-2 hover:bg-gray-100 transition flex justify-center items-center text-center">
+                  <EditUsersProfile uid={user?._id}/>
                 </li>
                 <li className="px-4 py-2 hover:bg-gray-100 transition">
                   <LogoutButton />
