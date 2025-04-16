@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react";
 import AppRouts from "@/Constant/Constant";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const AddNewProject = () => {
+  const router = useRouter()
   const [loading, setLoading] = useState(false);
   //   const [userDetails, setUserDetails] = useState(null);
   const [newProjectForm, setNewProjectForm] = useState(false);
@@ -59,7 +61,9 @@ const AddNewProject = () => {
       const response = await axios.post(AppRouts.addNewProject, newProjectData);
       alert("save data sucessfully");
       setNewProjectForm(false);
-      window.location.reload();
+      // window.location.reload();
+     
+      router.replace("/");
       e.target.reset();     // Reset the form
 
       // window.location.reload();

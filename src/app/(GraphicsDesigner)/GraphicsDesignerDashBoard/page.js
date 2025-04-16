@@ -1,7 +1,6 @@
-
-"use client";
+'use client'
 import EmployeeNavbar from "@/app/Components/EmployeNavebar";
-import { useContext, useEffect, useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/Context/contrext";
 import axios from "axios";
 import AppRouts from "@/Constant/Constant";
@@ -13,10 +12,13 @@ const GraphicsDesignerDashBoard = () => {
 
   useEffect(() => {
     const fetchAssignedProjects = async () => {
-      if (!user?.userId) return;
+    
+      const uid = user?.userId
+      // console.log("user in graphics designer dashboard", uid);
+      
       try {
         const response = await axios.post(AppRouts.assignProjects, {
-          assignto: user.userId,
+          assignto: uid,
         });
         setProjects(response.data.data ); 
       } catch (error) {

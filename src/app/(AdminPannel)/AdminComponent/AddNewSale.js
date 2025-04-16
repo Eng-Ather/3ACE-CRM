@@ -4,8 +4,11 @@ import { useEffect, useState } from "react";
 import AppRouts from "@/Constant/Constant";
 import { Pencil, } from "lucide-react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const AddNewSale = ({ pid, projectTitle }) => {
+
+  const router = useRouter()
 
   const [addPayment, setAddPayment] = useState(false)
   const [loading, setLoading] = useState()
@@ -43,7 +46,13 @@ const AddNewSale = ({ pid, projectTitle }) => {
       const response = await axios.post(AppRouts.addNewPaymentt, { projectID: pid, newPayment });
       // console.log("response : ", add.data);
       setAddPayment(false); // Close the modal
-      window.location.reload();
+      console.log("current path", router.asPath);
+      
+      // window.location.reload();
+
+      router.replace("/");
+      // router.replace(router.asPath??"/AdminPannel/SalesPageForAdmin");
+      
       e.target.reset();     // Reset the form
     } catch (error) {
       console.log(error?.response?.data?.msg || error.message);

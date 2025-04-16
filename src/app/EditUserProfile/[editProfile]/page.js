@@ -1,7 +1,11 @@
 'use client'
 
+import { useParams } from "next/navigation";
+
+
 const EditUserProfile = ()=>{
    
+  const params = useParams();
    
     return(
         <div>
@@ -15,3 +19,4 @@ const EditUserProfile = ()=>{
     )
 }
 export default EditUserProfile
+

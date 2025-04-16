@@ -20,8 +20,9 @@ const LogoutButton = () => {
     Cookies.remove("token");
     sessionStorage.clear();
     localStorage.clear();
-    window.location = "/";    //Redirect forcefully to the main landing screen
 
+    // window.location = "/";    //Redirect forcefully to the main landing screen
+    router.replace("/")
    
   };
 

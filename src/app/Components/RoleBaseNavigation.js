@@ -8,7 +8,7 @@ const RoleBasedNavigation = () => {
   const router = useRouter();
   const { user } = useContext(AuthContext);
 
-  console.log("user in navigatio", user);
+  // console.log("user in navigatio", user);
   if (!user) {
     router.replace("/");
     return;

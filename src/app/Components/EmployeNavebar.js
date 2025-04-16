@@ -10,7 +10,7 @@ import EditUsersProfile from "./EditProfile";
 
 export default function EmployeeNavbar() {
   const { user } = useContext(AuthContext);
-  console.log(user._id);
+  // console.log(user._id);
 
   const [isOpen, setIsOpen] = useState(false);
   const [profile, setProfile] = useState(false);

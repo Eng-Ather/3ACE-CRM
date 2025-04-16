@@ -1,3 +1,4 @@
+'use client'
 import LogoutButton from "@/app/Components/Logout";
 
 const DeveloperDashBoard = () => {

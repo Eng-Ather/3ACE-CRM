@@ -1,4 +1,4 @@
-
+'use client'
 const InfoRow = ({ label, value }) => (
     <div className="flex justify-between">
       <span className="text-blue-100 font-medium">{label}:</span>

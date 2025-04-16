@@ -5,8 +5,12 @@ import { useEffect, useState } from "react";
 import AppRouts from "@/Constant/Constant";
 import { Pencil, } from "lucide-react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const EditButton = ({ id }) => {
+
+  const router = useRouter()
+
   const [editProjectDetails, setEditProjectDetails] = useState(false);
   const [projectCurrentDetails, setProjectCurrentDetails] = useState();
   const [loading, setLoading] = useState(false); // Added loading state
@@ -84,7 +88,8 @@ const EditButton = ({ id }) => {
         const res = await axios.post(AppRouts.updateSalesRecord,{projectID:id, updatSalesdData})
         // console.log("res22", res);        
 
-        window.location.reload();
+        // window.location.reload();
+        router.replace("/")
       } else {
         alert("Failed to update project.");
         setLoading(false);
