@@ -7,7 +7,7 @@ import AppRouts from "@/Constant/Constant";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useContext } from "react";
-import { AuthContext } from "@/Context/contrext";
+import { AuthContext } from "@/Context/context";
 
 const Signin = () => {
 

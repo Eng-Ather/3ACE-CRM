@@ -2,7 +2,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "./Components/Footer";
-import AuthContextProvider from "@/Context/contrext";
+import AuthContextProvider from "@/Context/context";
 import RoleBasedNavigation from "./Components/RoleBaseNavigation";
 
 

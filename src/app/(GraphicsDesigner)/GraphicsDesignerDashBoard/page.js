@@ -1,7 +1,7 @@
 'use client'
 import EmployeeNavbar from "@/app/Components/EmployeNavebar";
 import { use, useContext, useEffect, useState } from "react";
-import { AuthContext } from "@/Context/contrext";
+import { AuthContext } from "@/Context/context";
 import axios from "axios";
 import AppRouts from "@/Constant/Constant";
 import UpdateProject from "@/app/Components/UpdateProject"; // Ensure this is imported

@@ -2,7 +2,7 @@
 "use client";
 import { useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
-import { AuthContext } from "@/Context/contrext";
+import { AuthContext } from "@/Context/context";
 
 const RoleBasedNavigation = () => {
   const router = useRouter();

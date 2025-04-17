@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useContext } from "react";
-import { AuthContext } from "@/Context/contrext";
+import { AuthContext } from "@/Context/context";
 import AppRouts from "@/Constant/Constant";
 import axios from "axios";
 import { X, Settings } from "lucide-react";

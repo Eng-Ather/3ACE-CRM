@@ -5,7 +5,7 @@ import React from "react";
 import Projects from "../AdminComponent/Projects";
 import AddNewProject from "@/app/Components/AddNewProject";
 import { useContext } from "react";
-import { AuthContext } from "@/Context/contrext";
+import { AuthContext } from "@/Context/context";
 
 export default function AdminDashboard() {
 

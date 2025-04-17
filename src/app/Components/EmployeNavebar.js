@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "@/Context/contrext";
+import { AuthContext } from "@/Context/context";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -135,7 +135,8 @@ export default function EmployeeNavbar() {
                     email : {user?.email}
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100 transition">
-                    <Link href="/">Edit Profile</Link>
+                    {/* <Link href="/">Edit Profile</Link> */}
+                    <EditUsersProfile uid={user?._id}/>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100 transition">
                     <LogoutButton />

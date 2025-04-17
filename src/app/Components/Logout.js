@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import { AuthContext } from "@/Context/contrext";
+import { AuthContext } from "@/Context/context";
 
 const LogoutButton = () => {
   const { setUser, setToken, setSession } = useContext(AuthContext);
