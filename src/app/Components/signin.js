@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -8,14 +7,12 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useContext } from "react";
 import { AuthContext } from "@/Context/context";
+import Button from "./Btn";
 
 const Signin = () => {
-
-
   // Access user and token from AuthContext
   const { user, setUser, setToken, setSession } = useContext(AuthContext);
   // console.log("User:" , user);
-
 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -50,7 +47,7 @@ const Signin = () => {
       // setToken(token);
 
       console.log(user);
-      
+
       //  Navigate
       if (userInfo.role === "admin") {
         router.push("/AdminDashboard");
@@ -76,7 +73,7 @@ const Signin = () => {
   };
 
   return (
-    <div className="w-full mx-auto py-4 px-6">
+    <div className="w-full mx-auto py-4 px-6 ">
       <h2 className="text-heading text-xl pt-10 md:text-4xl font-serif text-center ">
         Sign In
       </h2>
@@ -115,15 +112,18 @@ const Signin = () => {
             placeholder="Enter your password"
             required
           />
-        </div>
 
-        <button
+        {/* <button
           type="submit"
           className="w-full md:w-4/5  bg-blue-500 text-white text-lg font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
           disabled={loading}
-        >
+          >
           {loading ? "Signing in..." : "Sign In"}
-        </button>
+          </button> */}
+          <div className="py-6">
+        <Button title="Sign In" type="submit" loading={loading}></Button>
+          </div>
+          </div>
       </form>
     </div>
   );

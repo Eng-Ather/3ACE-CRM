@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import AppRouts from "@/Constant/Constant";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Button from "./Btn";
 
 const AddNewProject = () => {
   const router = useRouter()
@@ -102,14 +103,14 @@ const AddNewProject = () => {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2">
               
               {/* Row 1: Project Title and Project Type */}
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="projectTitle"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Project Title
                   </label>
@@ -124,7 +125,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="projectType"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Project Type
                   </label>
@@ -143,7 +144,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="client"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Client
                   </label>
@@ -158,7 +159,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="contactNo"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Contact Number
                   </label>
@@ -177,7 +178,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="email"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Email
                   </label>
@@ -191,7 +192,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="onboarding"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Onboarding Date
                   </label>
@@ -209,7 +210,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="salesPerson"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Sales Person
                   </label>
@@ -224,7 +225,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="status"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Status
                   </label>
@@ -245,7 +246,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="link"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Link
                   </label>
@@ -259,7 +260,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="proposedCompletionDate"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Proposed Completion Date
                   </label>
@@ -276,7 +277,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="actualCompletionDate"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Actual Completion Date
                   </label>
@@ -289,7 +290,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="region"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Region
                   </label>
@@ -308,7 +309,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="developer"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Developer
                   </label>
@@ -324,7 +325,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="projectCost"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Project Cost
                   </label>
@@ -342,7 +343,7 @@ const AddNewProject = () => {
                 <div className="w-full md:w-1/2">
                   <label
                     htmlFor="projectId"
-                    className="block text-text text-md font-semibold font-serif"
+                    className="block text-text text-sm font-semibold font-serif"
                   >
                     Project ID
                   </label>
@@ -357,14 +358,20 @@ const AddNewProject = () => {
                 </div> */}
 
               {/* Submit Button */}
-              <div className="flex justify-end">
-                <button
+              <div className="flex w-1/2 justify-center align-center mx-auto mt-4">
+                {/* <button
                   type="submit"
-                  className="w-fit bg-blue-500 text-white text-md font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
+                  className="w-fit bg-blue-500 text-white text-sm font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
                   disabled={loading}
                 >
                   {loading ? "Submitting..." : "Submit"}
-                </button>
+                </button> */}
+                <Button
+                type="submit"
+                  title="Submit"
+                loading={loading}
+                >
+                  </Button>
               </div>
             </form>
           </div>
