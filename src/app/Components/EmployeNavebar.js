@@ -1,3 +1,4 @@
+
 "use client";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "@/Context/context";
@@ -7,10 +8,10 @@ import Image from "next/image";
 import LogoutButton from "@/app/Components/Logout";
 import LOGO from "@/images/LOGO.jpeg";
 import EditUsersProfile from "./EditProfile";
+import ViewProfile from "./ViewProfile";
 
 export default function EmployeeNavbar() {
   const { user } = useContext(AuthContext);
-  // console.log(user._id);
 
   const [isOpen, setIsOpen] = useState(false);
   const [profile, setProfile] = useState(false);
@@ -29,7 +30,7 @@ export default function EmployeeNavbar() {
   }, []);
 
   return (
-    <nav className="bg-gradient-to-r from-gray-900 to-blue-900 text-white px-6 py-2 flex justify-between items-center relative shadow-md">
+    <nav className="bg-gradient-to-r from-gray-900 to-blue-900 text-white px-6 py-2 flex justify-between items-center relative shadow-md z-50">
       {/* Logo */}
       <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white">
         <Image
@@ -43,11 +44,8 @@ export default function EmployeeNavbar() {
 
       {/* Large Screen Menu */}
       <div className="font-serif hidden md:flex justify-between items-center w-fit space-x-6 text-lg font-medium">
-        {/* Large Screen Menu */}
         <div className="hidden md:flex items-center gap-5 w-full text-lg font-medium">
-          <div className="hidden md:flex items-center gap-5 w-full text-lg font-medium">
-            {user?.name} <br/> {user?.role}   
-          </div>
+          {user?.name} <br /> {user?.role}
         </div>
 
         {/* Profile Dropdown */}
@@ -58,7 +56,6 @@ export default function EmployeeNavbar() {
           >
             <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white transform transition duration-200 hover:scale-110">
               <Image
-                // src={LOGO}
                 src="https://static.vecteezy.com/system/resources/thumbnails/004/607/791/small_2x/man-face-emotive-icon-smiling-male-character-in-blue-shirt-flat-illustration-isolated-on-white-happy-human-psychological-portrait-positive-emotions-user-avatar-for-app-web-design-vector.jpg"
                 alt="Profile"
                 width={40}
@@ -66,14 +63,24 @@ export default function EmployeeNavbar() {
                 className="object-cover"
               />
             </div>
-            {/* <ChevronDown size={16} /> */}
           </button>
 
           {profile && (
-            <div className="absolute right-0 mt-3 w-48 bg-white text-black rounded-lg shadow-lg border border-gray-300">
+            <div className="absolute right-0 mt-3 w-48 bg-white text-black rounded-lg shadow-lg border border-gray-300 z-50">
               <ul>
+                <li className=" m-4 rounded-md hover:bg-gradient-to-r from-gray-900 to-blue-900 hover:text-white transition">
+                  <Link
+                    href="/SalesPersonDashboard"
+                    className="px-4 py-2 flex justify-center items-center text-center"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
                 <li className="px-4 py-2 hover:bg-gray-100 transition flex justify-center items-center text-center">
-                  <EditUsersProfile uid={user?._id}/>
+                  <ViewProfile uid={user?.id} />
+                </li>
+                <li className="px-4 py-2 hover:bg-gray-100 transition flex justify-center items-center text-center">
+                  <EditUsersProfile uid={user?.id} />
                 </li>
                 <li className="px-4 py-2 hover:bg-gray-100 transition">
                   <LogoutButton />
@@ -100,23 +107,14 @@ export default function EmployeeNavbar() {
 
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
-        <div className=" absolute top-16 left-0 w-full bg-gradient-to-r from-gray-800 to-blue-800 p-6 md:hidden shadow-lg flex flex-col space-y-3">
-          <div className=" w-full  text-lg font-medium space-y-5 ">
-            <div className="hover:border-b-2 hover:text-center border-white py-1">
-              {user.name}{" "}
-            </div>
-            <div className="hover:border-b-2 hover:text-center border-white py-1">
-              {user.role}
-            </div>
-          </div>
-
+        <div className="absolute top-16 left-0 w-full bg-gradient-to-r from-gray-800 to-blue-800 p-8 md:hidden shadow-lg flex flex-col space-y-3 z-50">
           {/* Profile Dropdown */}
           <div className="relative dropdown">
             <button
               onClick={() => setProfile(!profile)}
-              className="flex items-center gap-2 hover:text-blue-300 transition"
+              className="flex items-center gap-4 hover:text-blue-300 transition"
             >
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
+              <div className="w-10 h-10 rounded-md overflow-hidden border-2 border-white">
                 <Image
                   src="https://static.vecteezy.com/system/resources/thumbnails/004/607/791/small_2x/man-face-emotive-icon-smiling-male-character-in-blue-shirt-flat-illustration-isolated-on-white-happy-human-psychological-portrait-positive-emotions-user-avatar-for-app-web-design-vector.jpg"
                   alt="Profile"
@@ -125,20 +123,28 @@ export default function EmployeeNavbar() {
                   className="object-cover"
                 />
               </div>
+              {user?.name}
               <ChevronDown size={16} />
             </button>
 
             {profile && (
-              <div className="w-full bg-white text-black rounded-lg shadow-md border border-gray-300">
+              <div className="w-full bg-white text-black rounded-lg shadow-md border border-gray-300 z-50 mt-2">
                 <ul className="text-center">
-                  <li className="px-4 py-2 hover:bg-gray-100 transition">
-                    email : {user?.email}
+                <li className=" m-4 rounded-md hover:bg-gradient-to-r from-gray-900 to-blue-900 hover:text-white transition">
+                  <Link
+                    href="/SalesPersonDashboard"
+                    className="px-4 py-2 flex justify-center items-center text-center"
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+                  <li className="px-4 py-4 hover:bg-gray-100 transition flex justify-center items-center text-center">
+                    <ViewProfile uid={user?._id} />
                   </li>
-                  <li className="px-4 py-2 hover:bg-gray-100 transition">
-                    {/* <Link href="/">Edit Profile</Link> */}
-                    <EditUsersProfile uid={user?._id}/>
+                  <li className="px-4 py-4 hover:bg-gray-100 transition flex justify-center items-center text-center">
+                    <EditUsersProfile uid={user?._id} />
                   </li>
-                  <li className="px-4 py-2 hover:bg-gray-100 transition">
+                  <li className="px-4 py-4 hover:bg-gray-100 transition flex justify-center items-center text-center">
                     <LogoutButton />
                   </li>
                 </ul>
