@@ -21,8 +21,8 @@ const LogoutButton = () => {
     sessionStorage.clear();
     localStorage.clear();
 
-    // window.location = "/";    //Redirect forcefully to the main landing screen
-    router.replace("/")
+    window.location = "/";    //Redirect forcefully to the main landing screen
+    // router.replace("/")
    
   };
 

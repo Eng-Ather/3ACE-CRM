@@ -12,7 +12,7 @@ import UserInfoCard from "@/app/Components/UserInfoCard";
 
 const ViewUserProfile = () => {
     const { user } = useContext(AuthContext)
-    // console.log("user details :", user);
+    console.log("user details :", user);
 
     // const { editProfile: objID } = useParams();
 
@@ -47,7 +47,14 @@ const ViewUserProfile = () => {
                         </div>
 
                         <div className=" w-1/2 flex flex-col gap-y-4  ">
-                            <UserInfoCard label="Contact No" value={user?.phoneNumber || "N/A"} />
+                            <UserInfoCard label="Contact No"
+                                value={
+                                    user?.phoneNumber?.length > 0
+                                        ? user.phoneNumber.join(", ")
+                                        : "N/A"
+                                }
+                            />
+                            <UserInfoCard label="CNIC" value={user?.cnin || "N/A"} />
 
                             {/* <UserInfoCard label="Address" value={user?.address || "N/A"} /> */}
                             <UserInfoCard
@@ -59,7 +66,6 @@ const ViewUserProfile = () => {
                                 }
                             />
 
-                            <UserInfoCard label="CNIC" value={user?.cnic || "N/A"} />
                             {/* <UserInfoCard label="User ID" value={user?.userId || "N/A"} /> */}
                         </div>
                     </div>

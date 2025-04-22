@@ -36,15 +36,16 @@ const Signin = () => {
       const userInfo = response.data.data.info;
       const token = response.data.data.token;
       console.log("token : ", token);
-      // console.log("User Info:", userInfo);
+      console.log("User Signin:", userInfo);
       setUserDetails(userInfo);
 
       //****** Update sessionStorage & cookies to maintain tab session
       Cookies.set("token", token, { expires: 7 });
       sessionStorage.setItem("tokenForSessionStorage", token);
+      
       setUser(userInfo);
-      // setSession(token);
-      // setToken(token);
+      setSession(token);
+      setToken(token);
 
       console.log(user);
 
@@ -112,14 +113,6 @@ const Signin = () => {
             placeholder="Enter your password"
             required
           />
-
-        {/* <button
-          type="submit"
-          className="w-full md:w-4/5  bg-blue-500 text-white text-lg font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
-          disabled={loading}
-          >
-          {loading ? "Signing in..." : "Sign In"}
-          </button> */}
           <div className="py-6">
         <Button title="Sign In" type="submit" loading={loading}></Button>
           </div>
