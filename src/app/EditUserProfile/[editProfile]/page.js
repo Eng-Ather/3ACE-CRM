@@ -151,17 +151,25 @@ const EditUserProfile = (uid) => {
                             >
                                 {showConfirmPassword ? <Eye /> : <EyeOff />}
                             </div>
+                           
                         </div>
 
                         {/* Submit Button */}
                         <div className="flex justify-center">
-                            <button
+                        <Button
+                            title='Sign In'
+                            type="submit"
+                            loading={loading}
+                            >
+                            </Button>
+                            {/* disabled={loading} */}
+                            {/* {loading ? "Submitting..." : "Submit"} */}
+                            {/* <button
                                 type="submit"
                                 className=" w-full bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 px-6 rounded-lg transition duration-200"
-                                disabled={loading}
                             >
                                 {loading ? "Submitting..." : "Submit"}
-                            </button>
+                            </button> */}
                         </div>
                     </form>
                 </div>
