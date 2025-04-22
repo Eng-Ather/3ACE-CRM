@@ -1,4 +1,4 @@
-
+//nav bar for app epployee
 "use client";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "@/Context/context";
@@ -66,27 +66,34 @@ export default function EmployeeNavbar() {
           </button>
 
           {profile && (
-            <div className="absolute right-0 mt-3 w-48 bg-white text-black rounded-lg shadow-lg border border-gray-300 z-50">
-              <ul>
-                <li className=" m-4 rounded-md hover:bg-gradient-to-r from-gray-900 to-blue-900 hover:text-white transition">
-                  <Link
-                    href="/SalesPersonDashboard"
-                    className="px-4 py-2 flex justify-center items-center text-center"
-                  >
-                    Dashboard
-                  </Link>
-                </li>
-                <li className="px-4 py-2 hover:bg-gray-100 transition flex justify-center items-center text-center">
-                  <ViewProfile uid={user?.id} />
-                </li>
-                <li className="px-4 py-2 hover:bg-gray-100 transition flex justify-center items-center text-center">
-                  <EditUsersProfile uid={user?.id} />
-                </li>
-                <li className="px-4 py-2 hover:bg-gray-100 transition">
-                  <LogoutButton />
-                </li>
-              </ul>
-            </div>
+           <div className="absolute right-0 mt-3 w-56 bg-white text-black rounded-lg shadow-xl border border-gray-200 z-50">
+           <ul className="divide-y divide-gray-200">
+             <li className="hover:bg-gradient-to-r from-gray-900 to-blue-900 hover:text-white transition rounded-t-lg">
+               <Link
+                 href="/SalesPersonDashboard"
+                 className="block px-4 py-3 text-center"
+               >
+                 Dashboard
+               </Link>
+             </li>
+             <li className="hover:bg-gradient-to-r from-gray-900 to-blue-900 hover:text-white transition">
+               <div className="px-4 py-3 text-center">
+                 <ViewProfile uid={user?.id} />
+               </div>
+             </li>
+             <li className="hover:bg-gradient-to-r from-gray-900 to-blue-900 hover:text-white transition">
+               <div className="px-4 py-3 text-center">
+                 <EditUsersProfile uid={user?.id} />
+               </div>
+             </li>
+             <li className="hover:bg-gradient-to-r from-gray-900 to-blue-900 hover:text-white transition rounded-b-lg">
+               <div className="px-4 py-3 text-center">
+                 <LogoutButton />
+               </div>
+             </li>
+           </ul>
+         </div>
+         
           )}
         </div>
       </div>
@@ -128,27 +135,34 @@ export default function EmployeeNavbar() {
             </button>
 
             {profile && (
-              <div className="w-full bg-white text-black rounded-lg shadow-md border border-gray-300 z-50 mt-2">
-                <ul className="text-center">
-                <li className=" m-4 rounded-md hover:bg-gradient-to-r from-gray-900 to-blue-900 hover:text-white transition">
+              <div className="absolute right-0 mt-3 w-56 bg-white text-black rounded-lg shadow-xl border border-gray-200 z-50">
+              <ul className="divide-y divide-gray-200">
+                <li className="hover:bg-gradient-to-r from-gray-900 to-blue-900 hover:text-white transition rounded-t-lg">
                   <Link
                     href="/SalesPersonDashboard"
-                    className="px-4 py-2 flex justify-center items-center text-center"
+                    className="block px-4 py-3 text-center"
                   >
                     Dashboard
                   </Link>
                 </li>
-                  <li className="px-4 py-4 hover:bg-gray-100 transition flex justify-center items-center text-center">
-                    <ViewProfile uid={user?._id} />
-                  </li>
-                  <li className="px-4 py-4 hover:bg-gray-100 transition flex justify-center items-center text-center">
-                    <EditUsersProfile uid={user?._id} />
-                  </li>
-                  <li className="px-4 py-4 hover:bg-gray-100 transition flex justify-center items-center text-center">
+                <li className="hover:bg-gradient-to-r from-gray-900 to-blue-900 hover:text-white transition">
+                  <div className="px-4 py-3 text-center">
+                    <ViewProfile uid={user?.id} />
+                  </div>
+                </li>
+                <li className="hover:bg-gradient-to-r from-gray-900 to-blue-900 hover:text-white transition">
+                  <div className="px-4 py-3 text-center">
+                    <EditUsersProfile uid={user?.id} />
+                  </div>
+                </li>
+                <li className="hover:bg-gradient-to-r from-gray-900 to-blue-900 hover:text-white transition rounded-b-lg">
+                  <div className="px-4 py-3 text-center">
                     <LogoutButton />
-                  </li>
-                </ul>
-              </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
             )}
           </div>
         </div>

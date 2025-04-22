@@ -3,31 +3,18 @@
 
 import EmployeeNavbar from "@/app/Components/EmployeNavebar";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import AppRouts from "@/Constant/Constant";
+// import {useState } from "react";
+// import axios from "axios";
+// import AppRouts from "@/Constant/Constant";
 import { useContext } from "react";
 import { AuthContext } from "@/Context/context";
-import { Pencil, } from "lucide-react";
-
-// import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Eye, EyeOff } from "lucide-react";
 import UserInfoCard from "@/app/Components/UserInfoCard";
 
-
-const EditUserProfile = () => {
+const ViewUserProfile = () => {
     const { user } = useContext(AuthContext)
-    console.log("user details :", user);
+    // console.log("user details :", user);
 
-    const { editProfile: objID } = useParams();
-
-    const [userDetails, setUserDetails] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [passwordStrength, setPasswordStrength] = useState("");
+    // const { editProfile: objID } = useParams();
 
     return (
         <div className=" bg-gradient-to-r from-gray-900 to-blue-900">
@@ -43,9 +30,9 @@ const EditUserProfile = () => {
                     <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-wide">
                         3ACE Technology
                     </h1>
-                    {/* <p className="text-lg md:text-xl text-blue-200 mt-2 font-medium">
-                        Change Your Password Securely
-                    </p> */}
+                    <p className="text-lg md:text-xl text-blue-200 mt-2 font-medium">
+                        User Profile
+                    </p>
                 </div>
 
                 {/* User Info Card */}
@@ -84,4 +71,4 @@ const EditUserProfile = () => {
     );
 };
 
-export default EditUserProfile;
+export default ViewUserProfile;

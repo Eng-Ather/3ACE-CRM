@@ -1,29 +1,26 @@
-
+// cmponent to change password
 'use client'
 
 import EmployeeNavbar from "@/app/Components/EmployeNavebar";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import axios from "axios";
 import AppRouts from "@/Constant/Constant";
 import { useContext } from "react";
 import { AuthContext } from "@/Context/context";
-import { Pencil, } from "lucide-react";
-
-// import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Eye, EyeOff } from "lucide-react";
-import UserInfoCard from "@/app/Components/UserInfoCard";
 import Button from "@/app/Components/Btn";
 
-
-const EditUserProfile = (uid) => {
+const EditUserProfile = () => {
 
     const router = useRouter()
     const { user } = useContext(AuthContext)
-    // console.log("user details :", user);
 
-    const objID = uid.params.editProfile;
-    console.log("user ID : ", objID);
+    // console.log("user ID :", user._id);
+    // const objID = uid.params.editProfile;
+    
+    const objID =  user?._id
+    console.log("userID : ", objID);
 
     const [userDetails, setUserDetails] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -162,14 +159,7 @@ const EditUserProfile = (uid) => {
                             loading={loading}
                             >
                             </Button>
-                            {/* disabled={loading} */}
-                            {/* {loading ? "Submitting..." : "Submit"} */}
-                            {/* <button
-                                type="submit"
-                                className=" w-full bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 px-6 rounded-lg transition duration-200"
-                            >
-                                {loading ? "Submitting..." : "Submit"}
-                            </button> */}
+                          
                         </div>
                     </form>
                 </div>
