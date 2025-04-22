@@ -4,13 +4,14 @@ import { AuthContext } from "@/Context/context";
 import AppRouts from "@/Constant/Constant";
 import axios from "axios";
 import { X, Settings } from "lucide-react";
+import Button from "./Btn";
 
 const UpdateProject = ({ Pid, projectTitle }) => {
   const { user, token } = useContext(AuthContext);
   const [updateProject, setUpdateProject] = useState(false);
   const [file, setFile] = useState(null);
   const [fileType, setFileType] = useState(""); // To track file type
-
+const [loading, setLoading] = useState(false)
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -23,9 +24,11 @@ const UpdateProject = ({ Pid, projectTitle }) => {
 
   const handleClick = async () => {
     setUpdateProject(true);
+    setLoading(false)
   };
-
+  
   const handleSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
 
     if (!file) {
@@ -72,8 +75,10 @@ const UpdateProject = ({ Pid, projectTitle }) => {
       const response = await axios.post(AppRouts.updateProject, updatedData);
       alert(" Updated Successfully");
       setUpdateProject(false);
+      setLoading(false)
     } catch (error) {
       console.error("Error:", error);
+      setLoading(false)
       alert(
         `Upload failed: ${
           error.response?.data?.error?.message || error.message
@@ -83,12 +88,17 @@ const UpdateProject = ({ Pid, projectTitle }) => {
   };
   return (
     <div>
-      <button
-        onClick={handleClick}
+      {/* <button
         className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition flex items-center gap-2"
+        >
+        </button> */}
+      <Button
+        title="Modify"
+        
+        onClick={handleClick}
       >
-        <Settings size={18} /> Modify
-      </button>
+      <Settings size={18} /> Modify
+      </Button>
 
       {updateProject && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
@@ -154,13 +164,20 @@ const UpdateProject = ({ Pid, projectTitle }) => {
               </div>
 
               {/* Submit Button */}
-              <div className="flex justify-end">
-                <button
+              <div className="flex justify-end align-center mt-4">
+                {/* <button
                   type="submit"
                   className="w-fit bg-blue-500 text-white text-xl font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
                 >
                   Submit
-                </button>
+                </button> */}
+                <Button 
+                title="Submit"
+                type="submit"
+                loading={loading}
+                >
+
+                </Button>
               </div>
             </form>
           </div>

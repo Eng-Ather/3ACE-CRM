@@ -13,6 +13,7 @@ import { Pencil, } from "lucide-react";
 // import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Eye, EyeOff } from "lucide-react";
 import UserInfoCard from "@/app/Components/UserInfoCard";
+import Button from "@/app/Components/Btn";
 
 
 const EditUserProfile = (uid) => {
@@ -130,40 +131,40 @@ const EditUserProfile = (uid) => {
                                 </p>
                             </div>
 
-                            {/* Confirm Password Field */}
-                            <div className="relative">
-                                <label htmlFor="confirmPassword" className="block text-white text-sm font-medium mb-2">
-                                    Confirm Password
-                                </label>
-                                <input
-                                    type={showConfirmPassword ? "text" : "password"}
-                                    name="confirmPassword"
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-800 pr-10"
-                                    placeholder="******"
-                                    required
-                                />
-                                <div
-                                    className="absolute top-9 right-3 cursor-pointer text-gray-600"
-                                    onClick={() => setShowConfirmPassword((prev) => !prev)}
-                                >
-                                    {showConfirmPassword ? <Eye /> : <EyeOff />}
-                                </div>
+                        {/* Confirm Password Field */}
+                        <div className="relative">
+                            <label htmlFor="confirmPassword" className="block text-white text-sm font-medium mb-2">
+                                Confirm Password
+                            </label>
+                            <input
+                                type={showConfirmPassword ? "text" : "password"}
+                                name="confirmPassword"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-800 pr-10"
+                                placeholder="******"
+                                required
+                            />
+                            <div
+                                className="absolute top-9 right-3 cursor-pointer text-gray-600"
+                                onClick={() => setShowConfirmPassword((prev) => !prev)}
+                            >
+                                {showConfirmPassword ? <Eye /> : <EyeOff />}
                             </div>
+                        </div>
 
-                            {/* Submit Button */}
-                            <div className="flex justify-center">
-                                <button
-                                    type="submit"
-                                    className=" w-full bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 px-6 rounded-lg transition duration-200"
-                                    disabled={loading}
-                                >
-                                    {loading ? "Submitting..." : "Submit"}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                        {/* Submit Button */}
+                        <div className="flex justify-center">
+                            <button
+                                type="submit"
+                                className=" w-full bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 px-6 rounded-lg transition duration-200"
+                                disabled={loading}
+                            >
+                                {loading ? "Submitting..." : "Submit"}
+                            </button>
+                        </div>
+                    </form>
+                </div>
 
                 </div>
             </div>
