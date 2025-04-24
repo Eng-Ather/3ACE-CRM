@@ -109,7 +109,7 @@ const Signin = () => {
           <input
             type="password"
             name="password"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
+            className="w-full text-black px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
             placeholder="Enter your password"
             required
           />
