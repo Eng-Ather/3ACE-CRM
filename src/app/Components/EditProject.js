@@ -1,3 +1,4 @@
+//  page for edit project details
 "use client";
 
 import { useEffect, useState } from "react";
@@ -6,6 +7,7 @@ import AppRouts from "@/Constant/Constant";
 import { Pencil, } from "lucide-react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Button from "./Btn";
 
 const EditButton = ({ id }) => {
 
@@ -13,7 +15,7 @@ const EditButton = ({ id }) => {
 
   const [editProjectDetails, setEditProjectDetails] = useState(false);
   const [projectCurrentDetails, setProjectCurrentDetails] = useState();
-  const [loading, setLoading] = useState(false); // Added loading state
+  const [loading, setLoading] = useState(false); 
 
   //  to get project details
   const fatchData = async () => {
@@ -390,13 +392,18 @@ const EditButton = ({ id }) => {
 
               {/* Submit Button */}
               <div className="flex justify-end">
-                <button
-                  type="submit"
+                {/* <button
                   className="w-fit bg-blue-500 text-white text-xl font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
                   disabled={loading}
-                >
+                  >
                   {loading ? "Submitting..." : "Submit"}
-                </button>
+                  </button> */}
+                <Button 
+                className={"padding-4"}
+                type="submit"
+              title="Submit"
+                loading={loading}
+                />
               </div>
             </form>
           </div>

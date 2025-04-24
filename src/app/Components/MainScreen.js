@@ -1,12 +1,13 @@
+"use client";
 
-import Head from "next/head";
-import ProjectChart from "./ProjectGraph";
-import LOGO from "@/images/LOGO.jpeg";
 import Image from "next/image";
+import { Suspense } from "react";
 import Signin from "./signin";
 import ServicesPage from "./Services";
-import Banner from "@/images/Banner.png";
+import { Activity, BarChart3, Users, Briefcase } from "lucide-react";
 import RoleBasedNavigation from "./RoleBaseNavigation";
+import LOGO from "@/images/LOGO.jpeg";
+import ServiceBanner from "@/images/ServiceBanner.avif"
 
 export default function MainScreen() {
   const recentActivity = [
@@ -43,114 +44,102 @@ export default function MainScreen() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* <div className="min-h-screen bg-blue-50"> */}
-
-      <Head>
-        <title>ACE CRM - Streamline Your Business Operations</title>
-        <meta
-          name="description"
-          content="ACE CRM is a robust and scalable Customer Relationship Management system designed to streamline business operations, enhance employee management, and optimize sales, finance, and project workflows."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      {/* Hero Section */}
-
-      {/* Banner */}
-      <div className=" w-full h-[200px] md:h-[500px]">
-        <Image
-          src={Banner}
-          alt={"banner"}
-          // width={1000}
-          // height={500}
-          className="w-full h-full"
-        />
-      </div>
-
-      <div className=" flex flex-col md:flex-row gap-2">
-        {/* Recent Activity Section */}
-        <div className=" w-full md:w-1/2 py-5 mx-auto ">
-          <ProjectChart />
-        </div>
-{/* role base navigation */}
-<RoleBasedNavigation/>
-        {/* Sign-in Form */}
-        <div className="w-full md:w-1/2">
-          <Signin />
-        </div>
-      </div>
-
-      {/* recent activities */}
-      <div className=" container mx-auto">
-        <h2 className="text-heading text-center md:text-start text-xl md:text-4xl font-serif p-8 ">
-          Recent Activity
-        </h2>
-        <div className="py-8 container mx-auto px-6 ">
-          <ul className="space-y-4">
-            {recentActivity.slice(0, 4).map((data, index) => (
-              <li
-                key={index}
-                className="border-b-2 rounded-lg p-4 bg-white text-text flex flex-col md:flex-row justify-between gap-5 "
-              >
-                <span className="font-semibold">{data.activity}</span>
-                <div>
-                  <span className="text-blue-600">{data.ueryFrom}</span>{" "}
-                  <p className="text-gray-500">({data.employeeId})</p>
+    <div className="min-h-screen bg-slate-50">
+      {/* Hero Section with Banner and Sign-in */}
+      <section className="relative">
+        <div className="w-full h-[500px] relative  bg-gradient-to-r from-gray-800  to-blue-800">
+          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 flex items-center">
+            <div className="container mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-8">
+              <div className="text-white space-y-4 ">
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3  py-1 rounded-full text-sm">
+                  <Image
+                    src={LOGO}
+                    alt="Logo"
+                    width={50}
+                    height={50}
+                    className="rounded-full"
+                  />
+                  <span>Enterprise Solution</span>
                 </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        {/* <ServicesPage /> */}
-
-        {/* Features Section */}
-        <section className="py-10">
-          <div className="container mx-auto ">
-            <h2 className="text-heading text-center md:text-left text-xl md:text-4xl font-serif px-8 mb-12">
-              Why Choose ACE CRM?
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition duration-300">
-                <div className="flex justify-center mb-6">
-                  <span className="text-4xl text-blue-600">📊</span>
-                </div>
-                <h3 className="text-subheading text-xl font-semibold mb-4">
-                  Real-Time Analytics
-                </h3>
-                <p className="text-text">
-                  Make data-driven decisions with real-time insights and
-                  reports.
+                <h1 className="text-3xl md:text-5xl font-bold">
+                  3ACE CRM - Streamline Your Business Operations
+                </h1>
+                <p className="text-lg opacity-90 max-w-md">
+                  A robust and scalable Customer Relationship Management system
+                  designed to optimize your workflows.
                 </p>
               </div>
-              <div className="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition duration-300">
-                <div className="flex justify-center mb-6">
-                  <span className="text-4xl text-green-600">🤝</span>
+              <div className="flex justify-center md:justify-end">
+                <div className="bg-white bg-opacity-10 w-full max-w-md  backdrop-blur-sm shadow-xl rounded-lg p-6 text-white">
+                  <Signin />
                 </div>
-                <h3 className="text-subheading text-xl font-semibold mb-4">
-                  Seamless Collaboration
-                </h3>
-                <p className="text-text">
-                  Empower your team with tools for seamless communication and
-                  collaboration.
-                </p>
-              </div>
-              <div className="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition duration-300">
-                <div className="flex justify-center mb-6">
-                  <span className="text-4xl text-purple-600">⚙️</span>
-                </div>
-                <h3 className="text-subheading text-xl font-semibold mb-4">
-                  Customizable Workflows
-                </h3>
-                <p className="text-text">
-                  Tailor the CRM to fit your unique business processes.
-                </p>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 md:px-6 py-8">
+        {/* Role-based Navigation */}
+        <div className="mb-8">
+          <RoleBasedNavigation />
+        </div>
+{/* service banner */}
+<div>
+  <Image src={ServiceBanner} alt={"ServiceBanner"} className="w-full h-full object-contain" />
+</div>
+
+        {/* Features Section */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-8">
+            Why Choose ACE CRM?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div className="flex justify-center mb-6">
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                  <BarChart3 size={24} />
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-center mb-3">
+                Real-Time Analytics
+              </h3>
+              <p className="text-gray-600 text-center">
+                Make data-driven decisions with real-time insights and reports.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div className="flex justify-center mb-6">
+                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                  <Users size={24} />
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-center mb-3">
+                Seamless Collaboration
+              </h3>
+              <p className="text-gray-600 text-center">
+                Empower your team with tools for seamless communication and
+                collaboration.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div className="flex justify-center mb-6">
+                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                  <Activity size={24} />
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-center mb-3">
+                Customizable Workflows
+              </h3>
+              <p className="text-gray-600 text-center">
+                Tailor the CRM to fit your unique business processes.
+              </p>
+            </div>
+          </div>
         </section>
-      </div>
-      <div className="container mx-auto">
+
+        {/* Services Section */}
         <ServicesPage />
       </div>
     </div>

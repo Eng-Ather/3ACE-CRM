@@ -3,7 +3,7 @@ import MainSCreen from "./Components/MainScreen";
 
 export default function Home() {
   return (
-      <div>
+      <div className="bg-globalBackground to-blue-900 min-h-screen flex items-center justify-center ">
       <MainSCreen />
     </div>
   );
