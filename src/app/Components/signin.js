@@ -102,7 +102,9 @@ const Signin = () => {
         <div className="w-full md:w-4/5">
           <label
             htmlFor="password"
+            // className="block text-white text-lg font-semibold font-serif"
             className="block text-white text-lg font-semibold font-serif"
+
           >
             Password
           </label>
