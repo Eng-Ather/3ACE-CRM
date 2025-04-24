@@ -80,7 +80,7 @@ export default function MainScreen() {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 md:px-6 py-8">
+      <div className="container mx-auto">
         {/* Role-based Navigation */}
         <div className="mb-8">
           <RoleBasedNavigation />
