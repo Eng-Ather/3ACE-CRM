@@ -93,7 +93,7 @@ const Signin = () => {
           <input
             type="email"
             name="email"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
+            className="w-full text-black px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:border-heading"
             placeholder="Enter your email"
             required
           />
@@ -102,9 +102,8 @@ const Signin = () => {
         <div className="w-full md:w-4/5">
           <label
             htmlFor="password"
-            // className="block text-white text-lg font-semibold font-serif"
             className="block text-white text-lg font-semibold font-serif"
-
+ 
           >
             Password
           </label>
