@@ -74,7 +74,7 @@ const Signin = () => {
 
   return (
     <div className="w-full mx-auto py-4 px-6 ">
-      <h2 className="text-heading text-xl pt-10 md:text-4xl font-serif text-center ">
+      <h2 className="text-white text-xl pt-10 md:text-4xl font-serif text-center ">
         Sign In
       </h2>
 
@@ -85,7 +85,7 @@ const Signin = () => {
         <div className="w-full md:w-4/5">
           <label
             htmlFor="email"
-            className="block text-text text-lg font-semibold font-serif"
+            className="block text-white text-lg font-semibold font-serif"
           >
             Email
           </label>
@@ -101,7 +101,7 @@ const Signin = () => {
         <div className="w-full md:w-4/5">
           <label
             htmlFor="password"
-            className="block text-text text-lg font-semibold font-serif"
+            className="block text-white text-lg font-semibold font-serif"
           >
             Password
           </label>

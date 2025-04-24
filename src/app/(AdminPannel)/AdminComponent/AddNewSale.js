@@ -5,6 +5,7 @@ import AppRouts from "@/Constant/Constant";
 import { Pencil, } from "lucide-react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Button from "@/app/Components/Btn";
 
 const AddNewSale = ({ pid, projectTitle }) => {
 
@@ -153,13 +154,19 @@ const AddNewSale = ({ pid, projectTitle }) => {
 
               {/* Submit Button */}
               <div className="flex justify-end">
-                <button
+                {/* <button
                   type="submit"
                   className="w-fit bg-blue-500 text-white text-xl font-semibold font-serif px-10 py-3 rounded-lg hover:bg-heading transition duration-100"
                   disabled={loading}
                 >
                   {loading ? "Submitting..." : "Submit"}
-                </button>
+                </button> */}
+                <Button
+                title={"Submit"}
+                type="submit"
+                loading={loading}
+                
+                />
               </div>
             </form>
 

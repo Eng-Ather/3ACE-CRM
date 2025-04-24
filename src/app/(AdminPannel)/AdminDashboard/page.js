@@ -19,12 +19,12 @@ export default function AdminDashboard() {
   // const totalSales = 120000;
 
   return (
-    <div className="min-h-screen text-text">
+    <div className="min-h-screen text-text m-4">
 
        {/* Main Content */}
       <div className=" py-3 mx-auto bg-white shadow-md rounded-lg">
         {/* Header Section */}
-        <div className="w-full flex gap-10 shadow-md items-center underline decoration-heading p-4 mb-6">
+        <div className="w-full flex flex-col lg:flex-row gap-10 shadow-md items-center underline decoration-heading p-4 mb-6">
           <h2 className="text-md md:text-4xl font-serif text-heading">Project Details</h2>
           
           <AddNewProject />

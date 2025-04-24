@@ -13,8 +13,10 @@ module.exports = {
         heading: '#1E3A8A', // Dark Blue for headings
         subheading: '#4B5563', // Gray for subheadings
         text: '#333333', // Text color
-        background: '#F9FAFB', // Background color
+        // background: '#F9FAFB', // Background color
         accent: '#60A5FA', // Light blue accent color for buttons and links
+        globalBackground: "bg-gradient-to-r from-gray-900 to-blue-900"
+        // globalBackground2: ""
       },
       fontSize: {
         heading: '2.25rem', // Heading size (36px)

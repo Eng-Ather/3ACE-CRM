@@ -81,7 +81,7 @@ const AddNewProject = () => {
       {/* Button to Open Modal */}
       <button
         onClick={() => setNewProjectForm(true)}
-        className="bg-heading text-white text-lg px-3 py-1 rounded-full hover:bg-heading/90 transition duration-300 shadow-md"
+        className="bg-heading text-white text-lg px-3 py-1 md-px-5 rounded-full hover:bg-heading/90 transition duration-300 shadow-md"
       >
         +
       </button>
