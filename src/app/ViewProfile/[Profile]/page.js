@@ -1,14 +1,12 @@
-
+//user profile scrren 
 'use client'
 
 import EmployeeNavbar from "@/app/Components/EmployeNavebar";
 import { useParams } from "next/navigation";
-// import {useState } from "react";
-// import axios from "axios";
-// import AppRouts from "@/Constant/Constant";
 import { useContext } from "react";
 import { AuthContext } from "@/Context/context";
 import UserInfoCard from "@/app/Components/UserInfoCard";
+import { Mail, Phone, User, BadgeCheck, Calendar, MapPin, IdCard } from 'lucide-react';
 
 const ViewUserProfile = () => {
     const { user } = useContext(AuthContext)
@@ -17,64 +15,37 @@ const ViewUserProfile = () => {
     // const { editProfile: objID } = useParams();
 
     return (
-        <div className=" bg-gradient-to-r from-gray-900 to-blue-900">
-            {/* navebar */}
-            <nav className=" z-10">
-                <EmployeeNavbar />
-            </nav>
+        <div className="min-h-screen flex flex-col gap-4 bg-gradient-to-br from-gray-900 to-blue-800 ">
+            <EmployeeNavbar />
 
-            <div className=" min-h-screen flex flex-col justify-evenly ">
-
-                {/* Page Header */}
-                <div className=" pb-4 px-6 text-center">
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-wide">
-                        3ACE Technology
-                    </h1>
-                    <p className="text-lg md:text-xl text-blue-200 mt-2 font-medium">
-                        User Profile
-                    </p>
-                </div>
-
-                {/* User Info Card */}
-                <div className="bg-white mx-auto bg-opacity-10 backdrop-blur-md rounded-xl p-8 w-full md:w-2/3  shadow-lg">
-                    <h2 className="text-2xl font-bold text-white mb-6">User Info</h2>
-
-                    <div className="W-full flex gap-x-4 ">
-                        <div className=" w-1/2 flex flex-col gap-y-4  ">
-                            <UserInfoCard label="Name" value={user?.name || "N/A"} />
-                            <UserInfoCard label="Role" value={user?.role || "N/A"} />
-                            <UserInfoCard label="Email" value={user?.email || "N/A"} />
-                        </div>
-
-                        <div className=" w-1/2 flex flex-col gap-y-4  ">
-                            <UserInfoCard label="Contact No"
-                                value={
-                                    user?.phoneNumber?.length > 0
-                                        ? user.phoneNumber.join(", ")
-                                        : "N/A"
-                                }
-                            />
-                            <UserInfoCard label="CNIC" value={user?.cnin || "N/A"} />
-
-                            {/* <UserInfoCard label="Address" value={user?.address || "N/A"} /> */}
-                            <UserInfoCard
-                                label="Joining Date"
-                                value={
-                                    user?.joiningDate
-                                        ? new Date(user.joiningDate).toISOString().split("T")[0]
-                                        : "N/A"
-                                }
-                            />
-
-                            {/* <UserInfoCard label="User ID" value={user?.userId || "N/A"} /> */}
-                        </div>
+            <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl shadow-lg max-w-4xl mx-auto p-10">
+                <div className="flex flex-col items-center">
+                    {/* Profile Picture */}
+                    <div className="w-32 h-32 rounded-full bg-white shadow-lg mb-4 flex items-center justify-center text-4xl font-bold text-blue-900">
+                        {user?.name?.charAt(0)}
                     </div>
+
+                    {/* Name and Role */}
+                    <h2 className="text-2xl text-white font-bold">{user?.name}</h2>
+                    <p className="text-blue-200 font-medium mb-6">{user?.position || user?.role}</p>
                 </div>
 
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 text-white">
+                    {/* Left Column */}
+                    <UserInfoCard label="User ID" value={user?.userId} icon={<IdCard />} />
+                    <UserInfoCard label="Email" value={user?.email} icon={<Mail />} />
+                    <UserInfoCard label="Phone" value={user?.phoneNumber.join(", ")} icon={<Phone />} />
+                    <UserInfoCard label="CNIC" value={user?.cnin} icon={<BadgeCheck />} />
+
+                    {/* Right Column */}
+                    <UserInfoCard label="Joining Date" value={new Date(user?.joiningDate).toLocaleDateString()} icon={<Calendar />} />
+                    <UserInfoCard label="Address" value={user?.address} icon={<MapPin />} />
+                    <UserInfoCard label="Role" value={user?.role} icon={<User />} />
+                    <UserInfoCard label="Created At" value={new Date(user?.createdAt).toLocaleDateString()} icon={<Calendar />} />
+                </div>
             </div>
         </div>
-
-    );
+    )
 };
 
 export default ViewUserProfile;
