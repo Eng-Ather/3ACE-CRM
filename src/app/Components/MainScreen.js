@@ -47,7 +47,7 @@ export default function MainScreen() {
     <div className="min-h-screen bg-slate-50">
       {/* Hero Section with Banner and Sign-in */}
       <section className="relative">
-        <div className="w-full h-[500px] relative  bg-gradient-to-r from-gray-800  to-blue-800">
+        <div className="w-full min-h-screen relative  bg-gradient-to-r from-gray-800  to-blue-800">
           <div className="absolute inset-0 bg-black/30" />
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-8">
@@ -62,16 +62,17 @@ export default function MainScreen() {
                   />
                   <span>Enterprise Solution</span>
                 </div>
-                <h1 className="text-3xl md:text-5xl font-bold">
+                <h1 className="text-2xl md:text-5xl font-bold">
                   3ACE CRM - Streamline Your Business Operations
                 </h1>
-                <p className="text-lg opacity-90 max-w-md">
+                <p className="text-sm md:text-lg opacity-90 max-w-md">
                   A robust and scalable Customer Relationship Management system
                   designed to optimize your workflows.
                 </p>
               </div>
+              
               <div className="flex justify-center md:justify-end">
-                <div className="bg-white bg-opacity-10 w-full max-w-md  backdrop-blur-sm shadow-xl rounded-lg p-6 text-white">
+                <div className="bg-white bg-opacity-10 w-full  backdrop-blur-sm shadow-xl rounded-lg p-6 text-white">
                   <Signin />
                 </div>
               </div>
@@ -82,7 +83,7 @@ export default function MainScreen() {
 
       <div className="container mx-auto">
         {/* Role-based Navigation */}
-        <div className="mb-8">
+        <div>
           <RoleBasedNavigation />
         </div>
 {/* service banner */}
