@@ -30,6 +30,9 @@ const AppRouts = {
   addNewPaymentt : Base_URL + "/projectSalesRecord/addNewPayment",
 
   deleteSalesReacord: Base_URL + "/projectSalesRecord/deleteSalesRecord",
-  updateSalesRecord: Base_URL + "/projectSalesRecord/editSalesRecord"
+  updateSalesRecord: Base_URL + "/projectSalesRecord/editSalesRecord",
+
+
+  markAttendance: Base_URL + "/attendance/markAttendance",
 };
 export default AppRouts;
